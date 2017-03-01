@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 
-
 gem 'rails', '~> 5.0.1'
 gem 'mysql2', '~> 0.4.5'
 gem 'puma', '~> 3.0'
@@ -24,6 +23,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'mini_magick', '~> 4.6', '>= 4.6.1'
 gem 'carrierwave', '~> 1.0'
+gem 'devise', '~> 4.2'
 
 group :development, :test do
   gem 'byebug', platform: :mri
