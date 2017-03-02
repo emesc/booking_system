@@ -1,24 +1,34 @@
-# README
+# An Online Booking System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This platform emulates an online booking system that allows school teachers to book for enrichment classes offered by informal learning institutions like museums or private educational vendors.
 
-Things you may want to cover:
+## Built with
 
-* Ruby version
+[Ruby on Rails](http://rubyonrails.org/)
 
-* System dependencies
+## Planned features
 
-* Configuration
+### Views
 
-* Database creation
+* Separate controller and views for admin to manage resources.
+* Filters according to customers' areas of interest.
+* Calendar view for programs' available dates.
 
-* Database initialization
+### Users
 
-* How to run the test suite
+* Admins can make bookings, can view and create programs/users but should only be able to update and destroy their own programs.
+* Managers are school admins who can create and delete teacher accounts, can view programs, can make bookings.
+* Teachers can view programs, can make bookings.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Further challenges
 
-* Deployment instructions
-
-* ...
+* Tests. Eg, a bug can cause the system to accept a booking although the slot is taken
+* Rating system and accept feedback from teachers
+* Favourites by following the lesson. This will allow the teachers to easily book the program for his/her next batch of students
+* See what their fellow teachers from another school are following
+* Information to the teacher following the lesson if the lesson is removed by the admin
+* Availability of programs are dependent on the availability of staff and laboratories
+* Suitability of laboratories for different programs
+* Each staff has different competencies relative to another eventhough they belong to the same department
+* Provide summary of weekly bookings which staff can export to a table and print
+* Provide a separate view for staff to see bookings assigned
