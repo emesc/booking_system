@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302001812) do
+ActiveRecord::Schema.define(version: 20170302040207) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20170302001812) do
 
   create_table "programs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "program_title"
-    t.string   "program_description"
-    t.decimal  "program_fee",         precision: 5, scale: 2
+    t.text     "program_description", limit: 65535
+    t.decimal  "program_fee",                       precision: 5, scale: 2
     t.string   "image_title"
     t.string   "topics"
     t.integer  "group_size_min"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20170302001812) do
     t.integer  "category_id"
     t.integer  "delivery_mode_id"
     t.integer  "school_level_id"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
     t.index ["category_id"], name: "index_programs_on_category_id", using: :btree
     t.index ["delivery_mode_id"], name: "index_programs_on_delivery_mode_id", using: :btree
     t.index ["school_level_id"], name: "index_programs_on_school_level_id", using: :btree
