@@ -2,6 +2,10 @@
 
 This platform emulates an online booking system that allows school teachers to book for enrichment classes offered by informal learning institutions like museums or private educational vendors.
 
+## Demo
+
+See the current progress [here](https://online-booking-system.herokuapp.com).
+
 ## Built with
 
 [Ruby on Rails](http://rubyonrails.org/)
