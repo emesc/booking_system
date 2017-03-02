@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  program_title: MyString
+  program_description: MyString
+  program_fee: 9.99
+  image_title: MyString
+  topics: MyString
+  group_size_min: 1
+  group_size_max: 1
+  time_am: 2017-03-02 11:18:12
+  time_pm: 2017-03-02 11:18:12
+  user: one
+  category: one
+  delivery_mode: one
+  school_level: one
+
+two:
+  program_title: MyString
+  program_description: MyString
+  program_fee: 9.99
+  image_title: MyString
+  topics: MyString
+  group_size_min: 1
+  group_size_max: 1
+  time_am: 2017-03-02 11:18:12
+  time_pm: 2017-03-02 11:18:12
+  user: two
+  category: two
+  delivery_mode: two
+  school_level: two
