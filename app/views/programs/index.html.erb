@@ -8,8 +8,9 @@
               <%#= image_tag program.image_url(), size: "200x250" %>
               <div class="program-content">
                 <h3><%= program.program_title %></h3>
-                <%= program.program_description.truncate(200, " ") %>
-                <%= link_to "Learn more", program_path(program), class: "btn btn-primary" %>
+                <small>Topics: <%= program.topics %></small>
+                <%= truncate(program.program_description, length: 200, separator: " ") %>
+                <%= link_to "Learn more", program_path(program), class: "btn btn-success" %>
               </div>
             </div>
           </div>
