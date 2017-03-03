@@ -1,21 +1,31 @@
-<div id="programs-index">
-  <% if @programs.exists? %>
-    <% @programs.each_slice(3) do |program_group| %>
-      <div class="row">
-        <% program_group.each do |program| %>
-          <div class="col-md-4">
-            <div class="program">
-              <%#= image_tag program.image_url(), size: "200x250" %>
-              <div class="program-content">
-                <h3><%= program.program_title %></h3>
-                <small>Topics: <%= program.topics %></small>
-                <%= truncate(program.program_description, length: 200, separator: " ") %>
-                <%= link_to "Learn more", program_path(program), class: "btn btn-success" %>
+<div class="jumbotron">
+  <div class="container">
+    <h1><%= company_bs %></h1>
+    <p><%= hipster_statements %></p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Log in &raquo;</a></p>
+  </div>
+</div>
+
+<div class="container">
+  <div id="programs-index">
+    <% if @programs.exists? %>
+      <% @programs.each_slice(3) do |program_group| %>
+        <div class="row">
+          <% program_group.each do |program| %>
+            <div class="col-md-4">
+              <div class="program">
+                <%#= image_tag program.image_url(), size: "200x250" %>
+                <div class="program-content">
+                  <h3><%= program.program_title %></h3>
+                  <small>Topics: <%= program.topics %></small>
+                  <%= truncate(program.program_description, length: 200, separator: " ") %>
+                  <%= link_to "Learn more", program_path(program), class: "btn btn-success" %>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
