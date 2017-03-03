@@ -144,7 +144,7 @@ small {
 
 
 /* navbar */
-a{text-decoration:none;color:#000;}
+a {text-decoration:none;color:#000;}
 a:hover{text-decoration:none}
 input[type=text],input[type=password],input[type=submit],textarea{border:1px solid #ddd;padding:5px;outline:0;}
 h1 {
@@ -233,6 +233,8 @@ transition: all .3s ease 0s;-moz-transition: all .3s ease 0s;-webkit-transition:
 transition: background 300ms ease-in;
 padding-left:15px;
 transition: all .3s ease 0s;-moz-transition: all .3s ease 0s;-webkit-transition: all .3s ease 0s;-o-transition: all .3s ease 0s;-ms-transition: all .3s ease 0s;}
+
+/* content */
 
 #content_area {
   margin-top: 20px;

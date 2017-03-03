@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302040207) do
+ActiveRecord::Schema.define(version: 20170303062801) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -37,12 +37,10 @@ ActiveRecord::Schema.define(version: 20170302040207) do
     t.integer  "user_id"
     t.integer  "category_id"
     t.integer  "delivery_mode_id"
-    t.integer  "school_level_id"
     t.datetime "created_at",                                                null: false
     t.datetime "updated_at",                                                null: false
     t.index ["category_id"], name: "index_programs_on_category_id", using: :btree
     t.index ["delivery_mode_id"], name: "index_programs_on_delivery_mode_id", using: :btree
-    t.index ["school_level_id"], name: "index_programs_on_school_level_id", using: :btree
     t.index ["user_id"], name: "index_programs_on_user_id", using: :btree
   end
 
@@ -59,6 +57,14 @@ ActiveRecord::Schema.define(version: 20170302040207) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "suitabilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "program_id"
+    t.integer  "school_level_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["program_id", "school_level_id"], name: "index_suitabilities_on_program_id_and_school_level_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -71,7 +77,6 @@ ActiveRecord::Schema.define(version: 20170302040207) do
 
   add_foreign_key "programs", "categories"
   add_foreign_key "programs", "delivery_modes"
-  add_foreign_key "programs", "school_levels"
   add_foreign_key "programs", "users"
   add_foreign_key "users", "roles"
 end

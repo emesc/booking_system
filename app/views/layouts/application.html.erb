@@ -24,7 +24,7 @@
         <div class="header_bottom">
           <nav>
             <ul id="nav">
-              <li><a href="">Home</a></li>
+              <li><%= link_to "Home", root_path %></li>
               <li id="dropdown"><a href="">Drop Down</a>
                 <ul>
                   <li><a href="">Home</a></li>
@@ -54,18 +54,7 @@
     </section>
 
     <section id="content_area">
-      <div class="jumbotron">
-        <div class="container">
-          <h1><%= company_bs %></h1>
-          <p><%= hipster_statements %></p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Log in &raquo;</a></p>
-        </div>
-      </div>
-
-      <div class="container">
-        <%= yield %>
-        
-      </div >
+      <%= yield %>
       <%= render "shared/footer" %>
     </section>
   </body>

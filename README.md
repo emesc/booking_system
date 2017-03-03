@@ -1,10 +1,10 @@
 # An Online Booking System
 
-This platform emulates an online booking system that allows school teachers to book for enrichment classes offered by informal learning institutions like museums or private educational vendors.
+This platform emulates an online booking system that allows school teachers to book for enrichment programs offered by informal learning institutions like museums or private educational vendors.
 
-## Demo
+## Staus
 
-See the current progress [here](https://online-booking-system.herokuapp.com).
+Ongoing. A demo of the current progress is [here](https://online-booking-system.herokuapp.com).
 
 ## Built with
 
