@@ -7,22 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # school level
-6.times do |n|
-  name = "Primary-#{n+1}"
+3.times do |n|
+  name = "Primary #{n+1}-#{n+2}"
   SchoolLevel.create!(name: name)
 end
 
-4.times do |n|
-  name = "Secondary-#{n+1}"
-  SchoolLevel.create!(name: name)
-end
-
-SchoolLevel.create!(name: "JC-1")
-SchoolLevel.create!(name: "JC-2")
+SchoolLevel.create!(name: "Secondary 1-2")
+SchoolLevel.create!(name: "JC 1")
+SchoolLevel.create!(name: "JC 2")
 
 # delivery modes
 DeliveryMode.create!(name: "Hands on workshop")
 DeliveryMode.create!(name: "Lecture Demonstration")
+DeliveryMode.create!(name: "Self-guided")
 
 # roles
 r1 = Role.create!(name: "Admin", description: "Can perform any CRUD operation on any resource")

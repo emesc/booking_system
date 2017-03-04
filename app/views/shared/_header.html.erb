@@ -1,0 +1,29 @@
+<div class="wrapper header">
+  <div class="clearfix header_top">
+    <div class="clearfix logo floatleft">
+      <a href=""><h1><span>Program</span> Booking</h1></a>
+    </div>
+    <div class="clearfix search floatright">
+      <%= render "shared/search" %>
+    </div>
+  </div>
+  <div class="header_bottom">
+    <nav>
+      <ul id="nav">
+        <li><%= link_to "Home", root_path %></li>
+        <li id="dropdown"><a href="">Drop Down</a>
+          <ul>
+            <% @categories.each do |category| %>
+              <li><%= link_to category.name, "#" %></li>
+            <% end %>
+          </ul>
+        </li>
+        <% @school_levels.each do |level| %>
+          <li><%= link_to level.name, "#" %></li>
+        <% end %>
+        <li><a href="">About us</a></li>
+        <li><a href="">Contact us</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>

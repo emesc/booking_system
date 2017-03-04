@@ -3,7 +3,7 @@
   <head>
     <title>BookingSystem</title>
     <%= csrf_meta_tags %>
-
+    <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Oswald:400,300,700' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render "shared/shim" %>
@@ -12,50 +12,22 @@
   <body>
     <%= render "shared/flash_message" %>
     <section id="header_area">
-      <div class="wrapper header">
-        <div class="clearfix header_top">
-          <div class="clearfix logo floatleft">
-            <a href=""><h1><span>Program</span> Booking</h1></a>
-          </div>
-          <div class="clearfix search floatright">
-            <%= render "shared/search" %>
-          </div>
-        </div>
-        <div class="header_bottom">
-          <nav>
-            <ul id="nav">
-              <li><%= link_to "Home", root_path %></li>
-              <li id="dropdown"><a href="">Drop Down</a>
-                <ul>
-                  <li><a href="">Home</a></li>
-                  <li><a href="">Category</a></li>
-                  <li><a href="">Category</a></li>
-                  <li><a href="">Category</a></li>
-                  <li><a href="">Category</a></li>
-                  <li><a href="">Category</a></li>
-                  <li><a href="">Category</a></li>
-                  <li><a href="">Category</a></li>
-                  <li><a href="">Category</a></li>
-                </ul>
-              </li>
-              <li><a href="">Category</a></li>
-              <li><a href="">Category</a></li>
-              <li><a href="">Category</a></li>
-              <li><a href="">Category</a></li>
-              <li><a href="">Category</a></li>
-              <li><a href="">Category</a></li>
-              <li><a href="">Category</a></li>
-              <li><a href="">Category</a></li>
-              <li><a href="">Category</a></li>
-            </ul>
-          </nav>
-        </div>
+      <%= render "shared/header" %>
+    </section>
+    
+    <section id="content_area">
+      <div class="clearfix wrapper main_content_area">
+        <%= yield %>
+        <%= render "shared/sidebar" %>
       </div>
     </section>
-
-    <section id="content_area">
-      <%= yield %>
-      <%= render "shared/footer" %>
+    
+    <section id="footer_top_area">
+      <%= render "shared/footer_top" %>
+    </section>
+    
+    <section id="footer_bottom_area">
+      <%= render "shared/footer_bottom" %>
     </section>
   </body>
 </html>

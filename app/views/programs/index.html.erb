@@ -1,31 +1,61 @@
-<div class="jumbotron">
-  <div class="container">
-    <h1><%= company_bs %></h1>
-    <p><%= hipster_statements %></p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Log in &raquo;</a></p>
-  </div>
-</div>
-
-<div class="container">
-  <div id="programs-index">
-    <% if @programs.exists? %>
-      <% @programs.each_slice(3) do |program_group| %>
-        <div class="row">
-          <% program_group.each do |program| %>
-            <div class="col-md-4">
-              <div class="program">
-                <%#= image_tag program.image_url(), size: "200x250" %>
-                <div class="program-content">
-                  <h3><%= program.program_title %></h3>
-                  <small>Topics: <%= program.topics %></small>
-                  <%= truncate(program.program_description, length: 200, separator: " ") %>
-                  <%= link_to "Learn more", program_path(program), class: "btn btn-success" %>
-                </div>
-              </div>
-            </div>
-          <% end %>
+<div class="clearfix main_content floatleft">
+          
+  <div class="clearfix content">
+    <div class="content_title"><h2>Recently Added Program</h2></div>
+    
+    <div class="clearfix single_content">
+      <div class="clearfix post_date floatleft">
+        <div class="date">
+          <h3>27</h3>
+          <p>January</p>
         </div>
-      <% end %>
-    <% end %>
+      </div>
+      <div class="clearfix post_detail">
+        <h2><a href="">Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </a></h2>
+        <div class="clearfix post-meta">
+          <p><span><i class="fa fa-user"></i> Admin</span> <span><i class="fa fa-clock-o"></i> 20 Jan 2014</span> <span><i class="fa fa-comment"></i> 4 comments</span> <span><i class="fa fa-folder"></i> Category</span></p>
+        </div>
+        <div class="clearfix post_excerpt">
+          <%= image_tag("science.png", alt: "science") %>
+          <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a 
+          ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class 
+          aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos </p>
+        </div>
+        <a href="">Continue Reading</a>
+      </div>
+    </div>
+
+    <% @programs.each do |program| %>
+      <div class="clearfix single_content">
+        <div class="clearfix post_date floatleft">
+          <h3><%= program.created_at.strftime("%d") %></h3>
+          <p><%= program.created_at.strftime("%B") %></p>
+        </div>
+        <div class="clearfix post_detail">
+          <h2><%= link_to program.program_title, program_path(program) %></h2>
+          <div class="clearfix post-meta">
+            <p>Topics: <span><%= program.topics %></span></p>
+          </div>
+          <div class="clearfix post_excerpt">
+            <%= image_tag("science_bw.png", alt: "science") %>
+            <p><%= truncate(program.program_description, length: 200, separator: " ") %></p>
+          </div>
+          <%= link_to "Learn more", program_path(program) %>
+        </div>
+      </div>
+    <% end %>           
+  </div>
+  
+  <div class="pagination">
+    <nav>
+      <ul>
+        <li><a href=""> << </a></li>
+        <li><a href="">1</a></li>
+        <li><a href="">2</a></li>
+        <li><a href="">3</a></li>
+        <li><a href="">4</a></li>
+        <li><a href=""> >> </a></li>
+      </ul>
+    </nav>
   </div>
 </div>
