@@ -34,13 +34,13 @@
         <div class="clearfix post_detail">
           <h2><%= link_to program.program_title, program_path(program) %></h2>
           <div class="clearfix post-meta">
-            <p>Topics: <span><%= program.topics %></span></p>
+            <p><span>Topics: <%= program.topics %></span></p>
           </div>
           <div class="clearfix post_excerpt">
             <%= image_tag("science_bw.png", alt: "science") %>
             <p><%= truncate(program.program_description, length: 200, separator: " ") %></p>
           </div>
-          <%= link_to "Learn more", program_path(program) %>
+          <%= link_to "Continue Reading", program_path(program) %>
         </div>
       </div>
     <% end %>           
