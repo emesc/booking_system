@@ -1,4 +1,5 @@
 class ProgramsController < ApplicationController
+
   def index
     @programs = Program.all
     @categories = Category.all
@@ -6,5 +7,8 @@ class ProgramsController < ApplicationController
   end
 
   def show
+    @categories = Category.all
+    @school_levels = SchoolLevel.all
+    @program = Program.find(params[:id])
   end
 end

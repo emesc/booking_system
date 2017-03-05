@@ -1,0 +1,35 @@
+<div class="clearfix main_content floatleft">          
+  <div class="clearfix content">
+    <div class="content_title"><h2><%= @program.program_title %></h2></div>
+    <div class="single_work_page clearfix">
+      <div class="work_single_page_feature"><%= image_tag("science_bw.png", alt: "science") %></div>
+      <div class="work_meta clearfix">
+        <p class="floatleft">Category : <span> <%= @program.category.name %></span> Topics: <span><%= @program.topics %></span></p>
+        <a class="floatright" href="" target="_blank">Book this program</a>
+      </div>
+      <div class="single_work_page_content">
+        <p><%= @program.program_description %></p><br/>
+      </div>
+      
+    </div>
+      <div class="more_works">
+        <h2>Other programs you may like <i class="fa fa-thumbs-o-up"></i></h2>
+        <div class="more_works_container">
+          <div class="single_more_works floatleft">
+            <img src="http://dummyimage.com/220x150/000/fff&text=Thumbnail" alt=""/>
+            <a href=""><h2>Program name here</h2></a>
+          </div>
+          <div class="single_more_works floatleft">
+            <img src="http://dummyimage.com/220x150/000/fff&text=Thumbnail" alt=""/>
+            <a href=""><h2>Program name here</h2></a>
+          </div>
+          <div class="single_more_works floatleft">
+            <img src="http://dummyimage.com/220x150/000/fff&text=Thumbnail" alt=""/>
+            <a href=""><h2>Program name here</h2></a>
+          </div>
+
+        </div>
+      </div>
+  </div>
+  
+</div>
