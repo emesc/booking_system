@@ -1,0 +1,18 @@
+<div class="clearfix main_content floatleft">       
+  <div class="clearfix content">
+    <div class="contact_us">
+      <h1>Contact us</h1>
+      
+      <p>Fixie etsy artisan hammock ennui retro gentrify. Deep v stumptown church-key green juice. Ennui paleo 8-bit neutra tofu actually diy. Salvia vinegar etsy hashtag pitchfork whatever polaroid. Intelligentsia beard kombucha freegan vhs tousled vice single-origin coffee. 3 wolf moon bicycle rights direct trade aesthetic. Flexitarian vice put a bird on it godard schlitz.</p>
+
+      <%= form_for @message, url: contact_path do |f| %>
+        <p><%= f.text_field :name, placeholder: "Full Name*", class: "wpcf7-text" %></p>
+        <p><%= f.text_field :email, placeholder: "Email*", class: "wpcf7-email" %></p>
+        <p><%= f.text_field :subject, placeholder: "Subject*", class: "wpcf7-text" %></p>
+        <p><%= f.text_area :content, placeholder: "Message*", class: "wpcf7-textarea" %></p>
+        <p><%= f.submit "Send", class: "wpcf7-submit" %></p>
+        <p></p>
+      <% end %>
+    </div>
+  </div>
+</div>
