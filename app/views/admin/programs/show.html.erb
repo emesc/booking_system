@@ -1,0 +1,29 @@
+<div class="clearfix content">
+  <div class="programs-show">
+    <h1><strong><%= @program.program_title.upcase %></strong></h1>
+  <div class="programs-show-left">
+    <%= image_tag("science_bw.png") %>
+  </div>
+  <div class="programs-show-right">
+    <h3>Program details</h3>
+    <ul>
+      <li><strong>Category:</strong> <%= @program.category.name %></li>
+      <li><strong>Topics:</strong> <%= @program.topics %></li>
+      <li><strong>Group size:</strong> <%= @program.group_size_min %> minimum, <%= @program.group_size_max %> maximum</li>
+      <li><strong>Duration:</strong> <%= @program.duration %> hrs</li>
+      <li><strong>Start times:</strong> <%= @program.time_am.strftime("%l:%M %p") %>, <%= @program.time_pm.strftime("%l:%M %p") %></li>
+      <li><strong>Mode of delivery:</strong> <%= @program.delivery_mode.name %></li>
+      <li><strong>Target audience:</strong> <%= @program.school_levels.map(&:name).join(", ") %></li>
+      <li><strong>Date created:</strong> <%= @program.created_at.strftime("%d %B %Y at %l:%M %p") %></li>
+      <li><strong>Last update by:</strong> <%= full_name(@program.user.first_name, @program.user.last_name) %> on <%= @program.updated_at.strftime("%d %B %Y at %l:%M %p") %></li>
+    </ul>
+  </div>
+  <div class="programs-show-description">
+    <h4>Description</h4>
+    <p><%= @program.program_description %></p>
+    <hr>
+    <h3>Admin actions</h3>
+    <%= link_to "Back", admin_programs_path, class: "program-link" %> | <%= link_to "Edit", edit_admin_program_path(@program), class: "program-link" %> | <%= link_to "Delete", admin_program_path(@program), method: :delete, data: { confirm: "Are you sure?" }, class: "program-link" %>
+  </div>
+</div>
+</div>
