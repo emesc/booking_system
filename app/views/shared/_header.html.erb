@@ -1,29 +1,49 @@
 <div class="wrapper header">
-  <div class="clearfix header_top">
-    <div class="clearfix logo floatleft">
-      <a href=""><h1><span>Program</span> Booking</h1></a>
+  <% if params[:controller] == "admin/programs" %>
+    <div class="clearfix header_top">
+      <div class="clearfix logo floatleft">
+        <a href=""><h1><span>Booking</span> Manager</h1></a>
+      </div>
+      <div class="clearfix search floatright">
+        <%= render "shared/search" %>
+      </div>
     </div>
-    <div class="clearfix search floatright">
-      <%= render "shared/search" %>
+    <div class="header_bottom">
+      <nav>
+        <ul id="nav">
+          <li class="<%= active_class(admin_programs_path) %>"><%= link_to "Programs", admin_programs_path %></li>
+          <li class="<%= active_class(admin_programs_path) %>"><%= link_to "Categories", "#" %></li>
+          <li class="<%= active_class(admin_programs_path) %>"><%= link_to "School Levels", "#" %></li>
+        </ul>
+      </nav>
     </div>
-  </div>
-  <div class="header_bottom">
-    <nav>
-      <ul id="nav">
-        <li><%= link_to "Home", root_path %></li>
-        <li id="dropdown"><a href="">Drop Down</a>
-          <ul>
-            <% @categories.each do |category| %>
-              <li><%= link_to category.name, "#" %></li>
-            <% end %>
-          </ul>
-        </li>
-        <% @school_levels.each do |level| %>
-          <li><%= link_to level.name, "#" %></li>
-        <% end %>
-        <li><a href="">About us</a></li>
-        <li><%= link_to "Contact us", contact_path %></li>
-      </ul>
-    </nav>
-  </div>
+  <% else %>
+    <div class="clearfix header_top">
+      <div class="clearfix logo floatleft">
+        <a href=""><h1><span>Program</span> Booking</h1></a>
+      </div>
+      <div class="clearfix search floatright">
+        <%= render "shared/search" %>
+      </div>
+    </div>
+    <div class="header_bottom">
+      <nav>
+        <ul id="nav">
+          <li><%= link_to "Home", root_path %></li>
+          <li id="dropdown"><a href="">Drop Down</a>
+            <ul>
+              <% @categories.each do |category| %>
+                <li><%= link_to category.name, "#" %></li>
+              <% end %>
+            </ul>
+          </li>
+          <% @school_levels.each do |level| %>
+            <li><%= link_to level.name, "#" %></li>
+          <% end %>
+          <li><a href="">About us</a></li>
+          <li><%= link_to "Contact us", contact_path %></li>
+        </ul>
+      </nav>
+    </div>
+  <% end %>
 </div>

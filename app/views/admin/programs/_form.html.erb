@@ -1,0 +1,61 @@
+<%= form_for [:admin, @program] do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="form-group">
+    <%= f.label :program_title, "Title" %>
+    <%= f.text_field :program_title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :program_description, "Description" %>
+    <%= f.text_area :program_description, rows: 5, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :topics %>
+    <%= f.text_field :topics, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :group_size_min, "Min group size" %>
+    <%= f.number_field :group_size_min, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :group_size_max, "Max group size" %>
+    <%= f.number_field :group_size_max, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :duration, "Duration (hrs)" %>
+    <%= f.number_field :duration, step: 0.01, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :time_am, "AM time" %>
+    <%= f.time_field :time_am, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :time_pm, "PM time" %>
+    <%= f.time_field :time_pm, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :category_id, "Category" %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: "Select one" }, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :delivery_mode, "Mode of delivery" %>
+    <%= f.select :delivery_mode_id, DeliveryMode.all.collect{ |x| [x.name, x.id] }, { include_blank: "Select one" }, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :school_level, "Target audience" %><br />
+    <%= hidden_field_tag "program[school_level_ids][]", nil %>
+    <div>
+      <% @school_levels.each do |school_level| %>
+        <span class="checkbox-list">
+          <%= check_box_tag "program[school_level_ids][]", school_level.id, @program.school_levels.include?(school_level) %>
+          <%= school_level.name %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :user, "Uploaded by" %>
+    <%= f.select :user_id, User.admin_email.collect{ |x| [x.email, x.id] }, { include_blank: "Select one" }, class: "form-control" %>
+  </div>
+  <br />
+  <%= f.submit @program.new_record? ? "Create program" : "Update program", class: "btn admin-btn admin-create-btn" %><%= link_to "Go back to list", admin_programs_path, class: "btn admin-btn admin-cancel-btn" %>
+<% end %>

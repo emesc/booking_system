@@ -7,14 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # school level
-3.times do |n|
-  name = "Primary #{n+1}-#{n+2}"
+SchoolLevel.create!(name: "K-2")
+(1..9).reject{ |x| x.even? }.collect do |x|
+  name = "#{x+2}-#{x+3}"
   SchoolLevel.create!(name: name)
+  x += 1
 end
-
-SchoolLevel.create!(name: "Secondary 1-2")
-SchoolLevel.create!(name: "JC 1")
-SchoolLevel.create!(name: "JC 2")
+SchoolLevel.create!(name: "VCE")
 
 # delivery modes
 DeliveryMode.create!(name: "Hands on workshop")
@@ -55,6 +54,6 @@ User.create!(first_name: "Faye", last_name: "Little", email: "fayelittle@example
 end
 
 # programs
-Program.create!(program_title: "Light", program_description: Faker::Hipster.sentences(10).join(" "), program_fee: 10, image_title: "light fantastic", topics: "energy, reflection, refraction, lenses", group_size_min: 10, group_size_max: 20, time_am: "09:30:00", time_pm: "14:30:00", user_id: 1, category_id: 1, delivery_mode_id: 1, school_level_ids: [5])
-Program.create!(program_title: "Paper Airplanes", program_description: Faker::Hipster.sentences(10).join(" "), program_fee: 0, image_title: "airplane", topics: "energy, forces", group_size_min: 10, group_size_max: 20, time_am: "09:30:00", time_pm: "14:30:00", user_id: 2, category_id: 2, delivery_mode_id: 1, school_level_ids: [6])
-Program.create!(program_title: "Air Pressure", program_description: Faker::Hipster.sentences(10).join(" "), program_fee: 0, image_title: "pressure build up", topics: "energy, atmospheric pressure, surface area", group_size_min: 10, group_size_max: 50, time_am: "09:30:00", time_pm: "14:30:00", user_id: 3, category_id: 2, delivery_mode_id: 2, school_level_ids: [3, 4])
+Program.create!(program_title: Faker::Lorem.words(2).map(&:capitalize).join(" "), program_description: Faker::Hipster.sentences(10).join(" "), program_fee: 10, image_title: "light fantastic", topics: "energy, reflection, refraction, lenses", duration: 1.5, group_size_min: 10, group_size_max: 20, time_am: "09:30:00", time_pm: "14:30:00", user_id: 1, category_id: 1, delivery_mode_id: 1, school_level_ids: [5])
+Program.create!(program_title: Faker::Lorem.words(3).map(&:capitalize).join(" "), program_description: Faker::Hipster.sentences(10).join(" "), program_fee: 0, image_title: "airplane", topics: "energy, forces", duration: 1, group_size_min: 10, group_size_max: 20, time_am: "09:30:00", time_pm: "14:30:00", user_id: 2, category_id: 2, delivery_mode_id: 1, school_level_ids: [6])
+Program.create!(program_title: Faker::Lorem.words(2).map(&:capitalize).join(" "), program_description: Faker::Hipster.sentences(10).join(" "), program_fee: 0, image_title: "pressure build up", topics: "energy, atmospheric pressure, surface area", duration: 1, group_size_min: 10, group_size_max: 50, time_am: "09:30:00", time_pm: "14:30:00", user_id: 3, category_id: 2, delivery_mode_id: 2, school_level_ids: [3, 4])
