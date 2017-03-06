@@ -1,12 +1,9 @@
 class Admin::CategoriesController < Admin::ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
     @categories = Category.paginate(page: params[:page], per_page: 10)
     @school_levels = SchoolLevel.all
-  end
-
-  def show
   end
 
   def new
@@ -37,7 +34,7 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def destroy
     @category.destroy
-    flash[:danger] = "Category #{@category.name} successfully destroyed"
+    flash[:danger] = "Category #{@category.name} successfully deleted"
     redirect_to admin_categories_path
   end
 
