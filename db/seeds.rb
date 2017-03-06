@@ -49,7 +49,7 @@ User.create!(first_name: "Faye", last_name: "Little", email: "fayelittle@example
 50.times do |n|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
-  email = Faker::Internet.email
+  email = first_name.downcase + last_name.downcase + "@" + Faker::Internet.email.split("@").last
   User.create!(first_name: first_name, last_name: last_name, email: email, role_id: r3.id)
 end
 

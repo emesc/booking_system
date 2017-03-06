@@ -4,5 +4,5 @@
     <%= f.label :name %>
     <%= f.text_field :name, autofocus: true, class: "form-control" %>
   </div>
-  <%= f.submit @category.new_record? ? "Create category" : "Update category", class: "btn admin-btn admin-create-btn" %>
+  <%= f.submit @category.new_record? ? "Create category" : "Update category", class: "btn admin-btn admin-create-btn" %><%= link_to "Go back to list", admin_categories_path, class: "btn admin-btn admin-cancel-btn" %>
 <% end %>
