@@ -6,5 +6,5 @@
     <%= f.text_field :name, autofocus: true, class: "form-control" %>
   </div>
 
-  <%= f.submit @school_level.new_record? ? "Create school level" : "Update school level", class: "btn admin-btn admin-create-btn" %>
+  <%= f.submit @school_level.new_record? ? "Create school level" : "Update school level", class: "btn admin-btn admin-create-btn" %><%= link_to "Go back to list", admin_school_levels_path, class: "btn admin-btn admin-cancel-btn" %>
 <% end %>

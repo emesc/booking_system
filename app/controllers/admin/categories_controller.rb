@@ -3,7 +3,6 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def index
     @categories = Category.paginate(page: params[:page], per_page: 10)
-    @school_levels = SchoolLevel.all
   end
 
   def new
