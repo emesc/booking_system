@@ -1,3 +1,4 @@
+<% title @program.program_title %>
 <div class="clearfix main_content floatleft">          
   <div class="clearfix content">
     <div class="content_title"><h2><%= @program.program_title %></h2></div>
@@ -8,7 +9,27 @@
         <a class="floatright" href="" target="_blank">Book this program</a>
       </div>
       <div class="single_work_page_content">
-        <p><%= @program.program_description %></p><br/>
+        <p><%= @program.program_description %></p>
+        <br />
+        <p>Mode of delivery: <%= @program.delivery_mode.name %></p>
+        <br />
+        <div class="row">
+          <div class="col-md-2">
+            <i class="fa fa-money big" aria-hidden="true"></i> <%= free?(@program.id) %>
+          </div>
+          <div class="col-md-2">
+            <i class="fa fa-hourglass-half big" aria-hidden="true"></i> <%= pluralize(@program.duration, "hour") %>
+          </div>
+          <div class="col-md-2">
+            <i class="fa fa-crosshairs big" aria-hidden="true"></i> <%= @program.school_levels.map(&:name).join(", ") %>
+          </div>
+          <div class="col-md-3">
+            <i class="fa fa-users big" aria-hidden="true"></i> <%= @program.group_size_min %> to <%= @program.group_size_max %> students
+          </div>
+          <div class="col-md-3">
+            <i class="fa fa-clock-o big" aria-hidden="true"></i> <%= format_time(@program.time_am) %>, <%= format_time(@program.time_pm) %>
+          </div>
+        </div>
       </div>
       
     </div>

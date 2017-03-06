@@ -24,6 +24,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'mini_magick', '~> 4.6', '>= 4.6.1'
 gem 'carrierwave', '~> 1.0'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -1,3 +1,4 @@
+<% title @program.program_title %>
 <div class="clearfix content">
   <div class="programs-show">
     <h1><strong><%= @program.program_title.upcase %></strong></h1>
@@ -8,6 +9,7 @@
     <h3>Program details</h3>
     <ul>
       <li><strong>Category:</strong> <%= @program.category.name %></li>
+      <li><strong>Cost per student:</strong> <%= free?(@program.id)%></li>
       <li><strong>Topics:</strong> <%= @program.topics %></li>
       <li><strong>Group size:</strong> <%= @program.group_size_min %> minimum, <%= @program.group_size_max %> maximum</li>
       <li><strong>Duration:</strong> <%= @program.duration %> hrs</li>

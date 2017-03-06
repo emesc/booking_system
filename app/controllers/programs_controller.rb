@@ -1,9 +1,10 @@
 class ProgramsController < ApplicationController
 
   def index
-    @programs = Program.all
+    @programs = Program.paginate(page: params[:page], per_page: 10)
     @categories = Category.all
     @school_levels = SchoolLevel.all
+    @latest_program = Program.all.last
   end
 
   def show

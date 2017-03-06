@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+
   namespace :admin do
-    resources :programs
+    resources :programs, :categories
   end
 
   get "contact", to: "messages#new", as: "contact"
