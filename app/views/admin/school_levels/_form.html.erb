@@ -1,8 +1,10 @@
-<%= form_for [:admin, @category] do |f| %>
+<%= form_for [:admin, @school_level] do |f| %>
   <%= render "shared/error_messages", object: f.object %>
+
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, autofocus: true, class: "form-control" %>
   </div>
-  <%= f.submit @category.new_record? ? "Create category" : "Update category", class: "btn admin-btn admin-create-btn" %>
+
+  <%= f.submit @school_level.new_record? ? "Create school level" : "Update school level", class: "btn admin-btn admin-create-btn" %>
 <% end %>
