@@ -1,0 +1,24 @@
+<% title "Manage categories" %>
+<h1>Manage categories <%= link_to "Create new", new_admin_category_path, class: "btn admin-btn admin-create-btn floatright" %></h1>
+<% if @categories.exists? %>
+  <div class="clearfix well">
+    <%= will_paginate @categories %>
+    <table class="table table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Date created</th>
+        <th>Actions</th>
+      </tr>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= format_date(category.created_at) %></td>
+          <td><%= link_to "Edit", edit_admin_category_path(category), class: "btn admin-btn admin-btn-warning" %><%= link_to "Delete", admin_category_path(category), method: :delete, data: { confirm: "Are you sure?" }, class: "btn admin-btn admin-btn-danger" %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @categories %>
+  </div>
+<% else %>
+  <p>There are no categories to show.</p>
+<% end %>

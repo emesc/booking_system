@@ -169,13 +169,13 @@ margin-right: 10px;
 width: 180px;
 height: 160px;}
 .post_excerpt p{}
-.pagination{margin-bottom:15px;}
+/*.pagination{margin-bottom:15px;}
 .pagination ul{text-align: center;}
 .pagination ul li{display: inline-block;margin-right: 3px;}
 .pagination ul li a{background: none repeat scroll 0 0 #e7e7e7;
 color: #999;
 padding: 5px 8px;}
-.pagination ul li a:hover{background:#464646;color:#fff;}
+.pagination ul li a:hover{background:#464646;color:#fff;}*/
 .sidebar_container{background: none repeat scroll 0 0 #fff;
 width: 300px;}
 .newsletter{padding: 10px;
@@ -460,7 +460,7 @@ font-family: oswald;}
 .post-meta p span { font-size: 12px; font-style: italic; }
 
 /* button mod */
-.admin-btn { margin-top: 0; border-radius: 0; margin-right: 0; opacity: 0.8; &:hover { opacity: 1; } }
+.admin-btn { margin: 0; border-radius: 0; opacity: 0.8; &:hover { opacity: 1; } }
 .admin-create-btn { background: #419641; }
 .admin-cancel-btn { background: #d6bf86; border: 1px solid #ddd; padding:5px; outline:0; }
 
@@ -471,8 +471,17 @@ font-family: oswald;}
 span.checkbox-list { margin-right: 20px;}
 .program-link { color: #335a9a; } /* 595f23 */
 
-/* admin/programs show mod */
-/*.programs-show { h2 { background: #cccea9; padding: 10px; } }*/
+/* programs index/show mod */
+.fa.big {
+  font-size: 20px;
+  padding-right: 3px;
+}
+
+div.pagination { margin: 0 auto; width: 100%; text-align: center; }
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus { background-color: #6a8347; border-color: #6a8347; }
+
+/* admin/... show mod */
 
 .programs-show-left {
   float: left;

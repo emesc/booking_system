@@ -1,8 +1,8 @@
 <div class="wrapper header">
-  <% if params[:controller] == "admin/programs" %>
+  <% if params[:controller].split("/").first == "admin" %>
     <div class="clearfix header_top">
       <div class="clearfix logo floatleft">
-        <a href=""><h1><span>Booking</span> Manager</h1></a>
+        <a href="<%= admin_programs_path %>"><h1><span>Booking</span> Manager</h1></a>
       </div>
       <div class="clearfix search floatright">
         <%= render "shared/search" %>
@@ -12,15 +12,16 @@
       <nav>
         <ul id="nav">
           <li class="<%= active_class(admin_programs_path) %>"><%= link_to "Programs", admin_programs_path %></li>
-          <li class="<%= active_class(admin_programs_path) %>"><%= link_to "Categories", "#" %></li>
+          <li class="<%= active_class(admin_categories_path) %>"><%= link_to "Categories", admin_categories_path %></li>
           <li class="<%= active_class(admin_programs_path) %>"><%= link_to "School Levels", "#" %></li>
+          <li class="<%= active_class(admin_programs_path) %>"><%= link_to "Users", "#" %></li>
         </ul>
       </nav>
     </div>
   <% else %>
     <div class="clearfix header_top">
       <div class="clearfix logo floatleft">
-        <a href=""><h1><span>Program</span> Booking</h1></a>
+        <a href="<%= root_path %>"><h1><span>Program</span> Booking</h1></a>
       </div>
       <div class="clearfix search floatright">
         <%= render "shared/search" %>

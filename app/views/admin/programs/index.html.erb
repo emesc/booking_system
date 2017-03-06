@@ -1,24 +1,29 @@
+<% title "Manage programs" %>
 <h1>Manage programs <%= link_to "Create new", new_admin_program_path, class: "btn admin-btn admin-create-btn floatright" %></h1>
 <% if @programs.exists? %>
   <div class="clearfix well">
+    <%= will_paginate @programs %>
     <table class="table table-striped">
       <tr>
         <th>Category</th>
-        <th>Description</th>
+        <th>Title</th>
+        <th>School level</th>
         <th>Uploaded by</th>
         <th>Created at</th>
         <th>Actions</th>
       </tr>
       <% @programs.each do |program| %>
         <tr>
-          <th><%= program.category.name %></th>
-          <th><%= link_to program.program_title, admin_program_path(program), class: "program-link" %></th>
-          <th><%= full_name(program.user.first_name, program.user.last_name) %></th>
-          <th><%= program.created_at.strftime("%d %B %Y at %l:%M %p") %></th>
-          <th><%= link_to "Edit", edit_admin_program_path(program), class: "btn admin-btn admin-btn-warning" %><%= link_to "Delete", admin_program_path(program), method: :delete, data: { confirm: "Are you sure?" }, class: "btn admin-btn admin-btn-danger" %></th>
+          <td><%= program.category.name %></td>
+          <td><%= link_to program.program_title, admin_program_path(program), class: "program-link" %></td>
+          <td><%= program.school_levels.map(&:name).join(", ") %></td>
+          <td><%= full_name(program.user.first_name, program.user.last_name) %></td>
+          <td><%= format_date(program.created_at) %></td>
+          <td><%= link_to "Edit", edit_admin_program_path(program), class: "btn admin-btn admin-btn-warning" %><%= link_to "Delete", admin_program_path(program), method: :delete, data: { confirm: "Are you sure?" }, class: "btn admin-btn admin-btn-danger" %></td>
         </tr>
       <% end %>
     </table>
+    <%= will_paginate @programs %>
   </div>
 <% else %>
   <p>There are no programs to show.</p>

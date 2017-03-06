@@ -9,6 +9,10 @@
     <%= f.text_area :program_description, rows: 5, class: "form-control" %>
   </div>
   <div class="form-group">
+    <%= f.label :program_fee, "Cost per student (AUD)" %>
+    <%= f.number_field :program_fee, step: 0.01, class: "form-control" %>
+  </div>
+  <div class="form-group">
     <%= f.label :topics %>
     <%= f.text_field :topics, class: "form-control" %>
   </div>
