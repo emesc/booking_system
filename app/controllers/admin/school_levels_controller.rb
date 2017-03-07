@@ -6,6 +6,10 @@ class Admin::SchoolLevelsController < Admin::ApplicationController
     @categories = Category.all
   end
 
+  def show
+    @programs = @school_level.programs.sort_by_name.paginate(page: params[:page], per_page: 10)
+  end
+
   def new
     @school_level = SchoolLevel.new
   end
