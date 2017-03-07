@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'categories/show'
-
   namespace :admin do
     resources :programs, :categories, :school_levels, :users
   end
@@ -10,7 +8,8 @@ Rails.application.routes.draw do
   post "contact", to: "messages#create"
 
   resources :programs, only: [:index, :show]
-  resources :categories, only: [:index, :show]
+  resources :categories, only: [:show]
+  resources :school_levels, only: [:show]
 
   root "programs#index"
 end

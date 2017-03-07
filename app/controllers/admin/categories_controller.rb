@@ -6,7 +6,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   end
 
   def show
-    @programs = @category.programs.paginate(page: params[:page], per_page: 10)
+    @programs = @category.programs.sort_by_name.paginate(page: params[:page], per_page: 10)
   end
 
   def new

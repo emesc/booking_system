@@ -1,9 +1,13 @@
 class Admin::SchoolLevelsController < Admin::ApplicationController
-  before_action :set_school_level, only: [:edit, :update, :destroy]
+  before_action :set_school_level, only: [:show, :edit, :update, :destroy]
 
   def index
     @school_levels = SchoolLevel.all
     @categories = Category.all
+  end
+
+  def show
+    @programs = @school_level.programs.sort_by_name.paginate(page: params[:page], per_page: 10)
   end
 
   def new
