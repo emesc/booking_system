@@ -5,4 +5,10 @@ class Program < ApplicationRecord
 
   has_many :suitabilities
   has_many :school_levels, through: :suitabilities
+
+  scope :sort_by_name, -> { order(program_title: :ASC) }
+
+  def self.search(query)
+    where("program_title like ? or program_description like ?", "%#{query}%", "%#{query}%")
+  end
 end

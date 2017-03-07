@@ -1,10 +1,17 @@
 class ProgramsController < ApplicationController
 
   def index
-    @programs = Program.paginate(page: params[:page], per_page: 10)
+    all_programs = Program.all
+
+    if params[:search]
+      @programs = all_programs.search(params[:search]).sort_by_name.paginate(page: params[:page], per_page: 10)
+    else
+      @programs = all_programs.sort_by_name.paginate(page: params[:page], per_page: 10)
+    end
+
     @categories = Category.all
     @school_levels = SchoolLevel.all
-    @latest_program = Program.all.last
+    @latest_program = all_programs.last
   end
 
   def show

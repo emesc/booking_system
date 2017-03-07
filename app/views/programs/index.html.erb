@@ -22,26 +22,30 @@
       </div>
     </div>
 
-    <%= will_paginate @programs %>
-    <% @programs.each do |program| %>
-      <div class="clearfix single_content">
-        <div class="clearfix post_date floatleft">
-          <h3><%= program.created_at.strftime("%d") %></h3>
-          <p><%= program.created_at.strftime("%B") %></p>
-        </div>
-        <div class="clearfix post_detail">
-          <h2><%= link_to program.program_title, program_path(program) %></h2>
-          <div class="clearfix post-meta">
-            <p><span><i class="fa fa-book" aria-hidden="true"></i>  <%= program.topics %></span> <span><i class="fa fa-comment" aria-hidden="true"></i> Comments</span></p>
+    <% if @programs.empty? %>
+      <p>Your search returned 0 result.</p>
+    <% else %>
+      <%= will_paginate @programs %>
+      <% @programs.each do |program| %>
+        <div class="clearfix single_content">
+          <div class="clearfix post_date floatleft">
+            <h3><%= program.created_at.strftime("%d") %></h3>
+            <p><%= program.created_at.strftime("%B") %></p>
           </div>
-          <div class="clearfix post_excerpt">
-            <%= image_tag("science_bw.png", alt: "science") %>
-            <p><%= truncate(program.program_description, length: 200, separator: " ") %></p>
+          <div class="clearfix post_detail">
+            <h2><%= link_to program.program_title, program_path(program) %></h2>
+            <div class="clearfix post-meta">
+              <p><span><i class="fa fa-book" aria-hidden="true"></i>  <%= program.topics %></span> <span><i class="fa fa-comment" aria-hidden="true"></i> Comments</span></p>
+            </div>
+            <div class="clearfix post_excerpt">
+              <%= image_tag("science_bw.png", alt: "science") %>
+              <p><%= truncate(program.program_description, length: 200, separator: " ") %></p>
+            </div>
+            <%= link_to "Continue Reading", program_path(program) %>
           </div>
-          <%= link_to "Continue Reading", program_path(program) %>
         </div>
-      </div>
-    <% end %>           
-    <%= will_paginate @programs %>
+      <% end %>           
+      <%= will_paginate @programs %>
+    <% end %>
   </div>
 </div>

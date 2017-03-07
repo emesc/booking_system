@@ -1,7 +1,11 @@
 class Admin::ProgramsController < Admin::ApplicationController
   before_action :set_program, only: [:show, :edit, :update, :destroy]
   def index
-    @programs = Program.paginate(page: params[:page], per_page: 10)
+    if params[:search]
+      @programs = Program.search(params[:search]).sort_by_name.paginate(page: params[:page], per_page: 10)
+    else
+      @programs = Program.sort_by_name.paginate(page: params[:page], per_page: 10)
+    end
   end
 
   def show

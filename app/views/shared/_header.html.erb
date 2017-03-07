@@ -5,12 +5,13 @@
         <a href="<%= admin_programs_path %>"><h1><span>Booking</span> Manager</h1></a>
       </div>
       <div class="clearfix search floatright">
-        <%= render "shared/search" %>
+        <%= render "shared/search", search_path: admin_programs_path %>
       </div>
     </div>
     <div class="header_bottom">
       <nav>
         <ul id="nav">
+          <li class="<%= active_class(programs_path) %>"><%= link_to "Home", programs_path %></li>
           <li class="<%= active_class(admin_programs_path) %>"><%= link_to "Programs", admin_programs_path %></li>
           <li class="<%= active_class(admin_categories_path) %>"><%= link_to "Categories", admin_categories_path %></li>
           <li class="<%= active_class(admin_school_levels_path) %>"><%= link_to "School Levels", admin_school_levels_path %></li>
@@ -24,14 +25,14 @@
         <a href="<%= root_path %>"><h1><span>Program</span> Booking</h1></a>
       </div>
       <div class="clearfix search floatright">
-        <%= render "shared/search" %>
+        <%= render "shared/search", search_path: programs_path %>
       </div>
     </div>
     <div class="header_bottom">
       <nav>
         <ul id="nav">
           <li><%= link_to "Home", root_path %></li>
-          <li id="dropdown"><a href="">Drop Down</a>
+          <li id="dropdown"><a href="">Categories</a>
             <ul>
               <% @categories.each do |category| %>
                 <li><%= link_to category.name, "#" %></li>
@@ -41,7 +42,6 @@
           <% @school_levels.each do |level| %>
             <li><%= link_to level.name, "#" %></li>
           <% end %>
-          <li><a href="">About us</a></li>
           <li><%= link_to "Contact us", contact_path %></li>
         </ul>
       </nav>
