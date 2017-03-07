@@ -11,7 +11,7 @@
       </tr>
       <% @categories.each do |category| %>
         <tr>
-          <td><%= category.name %></td>
+          <td><%= link_to category.name, admin_category_path(category), class: "program-link" %></td>
           <td><%= format_date(category.created_at) %></td>
           <td><%= link_to "Edit", edit_admin_category_path(category), class: "btn admin-btn admin-btn-warning" %><%= link_to "Delete", admin_category_path(category), method: :delete, data: { confirm: "Are you sure?" }, class: "btn admin-btn admin-btn-danger" %></td>
         </tr>

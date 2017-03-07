@@ -23,7 +23,7 @@
       <h2>Categories</h2>
       <ul>
         <% @categories.each do |category| %>
-          <li class="cat-item"><%= link_to category.name, category_path(category) %>(12)</li>
+          <li class="cat-item"><%= link_to category.name, category_path(category) %>(<%= category.programs.count %>)</li>
         <% end %>
       </ul>
     </div>

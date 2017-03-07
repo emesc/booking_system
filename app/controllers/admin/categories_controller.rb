@@ -1,8 +1,12 @@
 class Admin::CategoriesController < Admin::ApplicationController
-  before_action :set_category, only: [:edit, :update, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
     @categories = Category.paginate(page: params[:page], per_page: 10)
+  end
+
+  def show
+    @programs = @category.programs.paginate(page: params[:page], per_page: 10)
   end
 
   def new
