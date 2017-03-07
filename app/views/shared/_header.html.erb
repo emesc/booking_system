@@ -39,8 +39,8 @@
               <% end %>
             </ul>
           </li>
-          <% @school_levels.each do |level| %>
-            <li><%= link_to level.name, "#" %></li>
+          <% @school_levels.each do |school_level| %>
+            <li><%= link_to school_level.name, school_level_path(school_level) %></li>
           <% end %>
           <li><%= link_to "Contact us", contact_path %></li>
         </ul>

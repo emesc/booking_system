@@ -1,5 +1,5 @@
 class Admin::SchoolLevelsController < Admin::ApplicationController
-  before_action :set_school_level, only: [:edit, :update, :destroy]
+  before_action :set_school_level, only: [:show, :edit, :update, :destroy]
 
   def index
     @school_levels = SchoolLevel.all

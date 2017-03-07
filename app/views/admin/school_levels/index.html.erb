@@ -10,7 +10,7 @@
       </tr>
       <% @school_levels.each do |school_level| %>
         <tr>
-          <td><%= school_level.name %></td>
+          <td><%= link_to school_level.name, admin_school_level_path(school_level), class: "program-link" %></td>
           <td><%= format_date(school_level.created_at) %></td>
           <td><%= link_to "Edit", edit_admin_school_level_path(school_level), class: "btn admin-btn admin-btn-warning" %><%= link_to "Delete", admin_school_level_path(school_level), method: :delete, data: { confirm: "Are you sure?" }, class: "btn admin-btn admin-btn-danger" %></td>
         </tr>
