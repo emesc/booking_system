@@ -20,7 +20,7 @@ class Admin::ProgramsController < Admin::ApplicationController
     @program = Program.new(program_params)
     if @program.save
       flash[:success] = "Program successfully created"
-      redirect_to admin_programs_path
+      redirect_to admin_program_path(@program)
     else
       render 'new'
     end
@@ -33,7 +33,7 @@ class Admin::ProgramsController < Admin::ApplicationController
   def update
     if @program.update_attributes(program_params)
       flash[:success] = "Program successfully updated"
-      redirect_to admin_programs_path
+      redirect_to admin_program_path(@program)
     else
       render 'edit'
     end
@@ -48,7 +48,7 @@ class Admin::ProgramsController < Admin::ApplicationController
   private
 
     def program_params
-      params.require(:program).permit(:program_title, :program_description, :program_fee, :duration, :image_title, :topics, :group_size_min, :group_size_max, :time_am, :time_pm, :user_id, :category_id, :delivery_mode_id, school_level_ids: [])
+      params.require(:program).permit(:program_title, :program_description, :program_fee, :duration, :image, :image_title, :topics, :group_size_min, :group_size_max, :time_am, :time_pm, :user_id, :category_id, :delivery_mode_id, school_level_ids: [])
     end
 
     def set_program

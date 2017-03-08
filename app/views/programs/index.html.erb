@@ -15,7 +15,7 @@
           <p><span><i class="fa fa-book" aria-hidden="true"></i>  <%= @latest_program.topics %></span> <span><i class="fa fa-comment" aria-hidden="true"></i> Comments</span></p>
         </div>
         <div class="clearfix post_excerpt">
-          <%= image_tag("science.png", alt: "science") %>
+          <%= image_tag @latest_program.image.url if @latest_program.image? %>
           <p><%= truncate(@latest_program.program_description, length: 200, separator: " ") %> </p>
         </div>
         <%= link_to "Continue Reading", program_path(@latest_program) %>
@@ -38,7 +38,7 @@
               <p><span><i class="fa fa-book" aria-hidden="true"></i>  <%= program.topics %></span> <span><i class="fa fa-comment" aria-hidden="true"></i> Comments</span></p>
             </div>
             <div class="clearfix post_excerpt">
-              <%= image_tag("science_bw.png", alt: "science") %>
+              <%= image_tag program.image.url if program.image? %>
               <p><%= truncate(program.program_description, length: 200, separator: " ") %></p>
             </div>
             <%= link_to "Continue Reading", program_path(program) %>
