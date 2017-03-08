@@ -64,6 +64,8 @@ Program.create!(program_title: Faker::Lorem.words(2).map(&:capitalize).join(" ")
   # round to the nearest 50c
   temp_fee = ((rand(1..5.0) * 2).round(0)) / 2.0
   program_fee = temp_fee <= 1 ? 0 : temp_fee
+  # image_url = Rails.root.join("app/assets/images/science").open
+  image_url = File.open(File.join(Rails.root, "app/assets/images/science/#{rand(1..11)}.jpg"))
   image_title = Faker::Lorem.words(2).join(" ")
   topics = Faker::Lorem.words(rand(2..4)).join(", ")
   duration = ((rand(1..3.0) * 2).round(0)) / 2.0
@@ -77,5 +79,5 @@ Program.create!(program_title: Faker::Lorem.words(2).map(&:capitalize).join(" ")
   # generate random array of consecutive elements for target audience
   x = rand(0..4)
   school_level_ids = (1..7).to_a[x..(x+(rand(1..2)))]
-  Program.create!(program_title: program_title, program_description: program_description, program_fee: program_fee, image_title: image_title, topics: topics, duration: duration, group_size_min: group_size_min, group_size_max: group_size_max, time_am: time_am, time_pm: time_pm, user_id: user_id, category_id: category_id, delivery_mode_id: delivery_mode_id, school_level_ids: school_level_ids)
+  Program.create!(program_title: program_title, program_description: program_description, program_fee: program_fee, image: image_url, image_title: image_title, topics: topics, duration: duration, group_size_min: group_size_min, group_size_max: group_size_max, time_am: time_am, time_pm: time_pm, user_id: user_id, category_id: category_id, delivery_mode_id: delivery_mode_id, school_level_ids: school_level_ids)
 end

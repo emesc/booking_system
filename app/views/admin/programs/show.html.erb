@@ -3,7 +3,7 @@
   <div class="programs-show">
     <h1><strong><%= @program.program_title.upcase %></strong></h1>
   <div class="programs-show-left">
-    <%= image_tag("science_bw.png") %>
+    <%= image_tag @program.image.url if @program.image? %>
   </div>
   <div class="programs-show-right">
     <h3>Program details</h3>
