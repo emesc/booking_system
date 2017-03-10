@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   before_validation :assign_role
   belongs_to :role
+  has_many :programs
 
   scope :admin_email, -> { where(role_id: 1).order(email: :ASC) }
 

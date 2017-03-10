@@ -1,5 +1,5 @@
 <div class="wrapper header">
-  <% if params[:controller].split("/").first == "admin" %>
+  <% if (params[:controller].split("/").first == "admin" && params[:controller].split("/").last != "sessions") %>
     <div class="clearfix header_top">
       <div class="clearfix logo floatleft">
         <a href="<%= admin_programs_path %>"><h1><span>Booking</span> Manager</h1></a>
@@ -17,9 +17,10 @@
           <li class="<%= active_class(admin_school_levels_path) %>"><%= link_to "School Levels", admin_school_levels_path %></li>
           <li class="<%= active_class(admin_users_path) %>"><%= link_to "Users", admin_users_path %></li>
         </ul>
+        <%= render "shared/session_links" %>
       </nav>
     </div>
-  <% else %>
+  <% elsif (params[:controller] == "admin/sessions" || params[:controller].split("/").first != "admin") %>
     <div class="clearfix header_top">
       <div class="clearfix logo floatleft">
         <a href="<%= root_path %>"><h1><span>Program</span> Booking</h1></a>
@@ -43,7 +44,8 @@
             <li><%= link_to school_level.name, school_level_path(school_level) %></li>
           <% end %>
           <li><%= link_to "Contact us", contact_path %></li>
-        </ul>
+          </ul>
+          <%= render "shared/session_links" %>
       </nav>
     </div>
   <% end %>

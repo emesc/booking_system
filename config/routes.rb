@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { sessions: "admin/sessions" }
+
   namespace :admin do
     resources :programs, :categories, :school_levels, :users
   end

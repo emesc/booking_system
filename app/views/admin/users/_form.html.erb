@@ -10,8 +10,8 @@
     <%= f.text_field :last_name, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%#= f.label :email %>
-    <%#= f.email_field :email, class: "form-control" %>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: "form-control" %>
   </div>
   <%= f.submit @user.new_record? ? "Create user" : "Update user", class: "btn admin-btn admin-create-btn" %><%= link_to "Go back to list", admin_users_path, class: "btn admin-btn admin-cancel-btn" %>
 <% end %>
