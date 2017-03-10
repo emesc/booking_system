@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @categories = Category.all
     @school_levels = SchoolLevel.all
@@ -12,6 +14,6 @@ class MessagesController < ApplicationController
   private
 
     def message_params
-      params.require(:message).permit(:name, :subject, :content)
+      params.require(:message).permit(:name, :email, :subject, :content)
     end
 end

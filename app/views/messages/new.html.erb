@@ -7,7 +7,7 @@
 
       <%= form_for @message, url: contact_path do |f| %>
         <p><%= f.text_field :name, placeholder: "Full Name*", class: "wpcf7-text" %></p>
-        <p><%#= f.text_field :email, placeholder: "Email*", class: "wpcf7-email" %></p>
+        <p><%= f.text_field :email, placeholder: "Email*", class: "wpcf7-email" %></p>
         <p><%= f.text_field :subject, placeholder: "Subject*", class: "wpcf7-text" %></p>
         <p><%= f.text_area :content, placeholder: "Message*", class: "wpcf7-textarea" %></p>
         <p><%= f.submit "Send", class: "wpcf7-submit" %></p>

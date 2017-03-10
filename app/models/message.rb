@@ -4,8 +4,8 @@ class Message < ApplicationRecord
   
   validates :name,    presence: true,
                       length: { minimum: 10, maximum: 50 }
-  # validates :email,   presence: true,
-  #                     length: { maximum: 255 },
-  #                     format: { with: VALID_EMAIL_REGEX }
+  validates :email,   presence: true,
+                      length: { maximum: 255 },
+                      format: { with: VALID_EMAIL_REGEX }
   validates :content, presence: true
 end

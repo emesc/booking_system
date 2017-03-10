@@ -1,5 +1,6 @@
 class Admin::ProgramsController < Admin::ApplicationController
   before_action :set_program, only: [:show, :edit, :update, :destroy]
+
   def index
     if params[:search]
       @programs = Program.search(params[:search]).sort_by_name.paginate(page: params[:page], per_page: 10)
@@ -18,6 +19,7 @@ class Admin::ProgramsController < Admin::ApplicationController
 
   def create
     @program = Program.new(program_params)
+    @program.user_id = current_user.id
     if @program.save
       flash[:success] = "Program successfully created"
       redirect_to admin_program_path(@program)
