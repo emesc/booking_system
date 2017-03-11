@@ -1,0 +1,21 @@
+<% title @role.name %>
+<div class="clearfix content">
+  <div class="programs-show">
+    <h1><strong><%= "Associated users for #{@role.name.capitalize} role" %></strong></h1>
+    <div class="programs-show-description">
+      <% if @role.users.exists? %>
+        <div class="role-list">
+          <ul>
+            <% @role.users.each do |user| %>
+              <li><%= link_to full_name(user.first_name, user.last_name), admin_user_path(user) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% else %>
+        <p>There are no users under this role.</p>
+      <% end %>
+      <hr>
+      <%= link_to "Back", :back || admin_roles_path, class: "program-link" %>
+    </div>
+  </div>
+</div>
