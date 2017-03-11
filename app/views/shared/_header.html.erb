@@ -1,4 +1,6 @@
 <div class="wrapper header">
+  <!-- dont show booking manager if not signed in -->
+  <!-- todo: show booking manager iff role is admin -->
   <% if (params[:controller].split("/").first == "admin" && params[:controller].split("/").last != "sessions") %>
     <div class="clearfix header_top">
       <div class="clearfix logo floatleft">
@@ -20,6 +22,7 @@
         <%= render "shared/session_links" %>
       </nav>
     </div>
+    <!-- show program booking (reg user's front page header) during log in and upon successful login -->
   <% elsif (params[:controller] == "admin/sessions" || params[:controller].split("/").first != "admin") %>
     <div class="clearfix header_top">
       <div class="clearfix logo floatleft">

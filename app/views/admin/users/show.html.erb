@@ -6,8 +6,9 @@
       <ul>
         <li><strong>Email:</strong> <%= @user.email %></li>
         <li><strong>Role:</strong> <%= @user.role.name %></li>
-        <li><strong>Date created:</strong> <%= format_date(@user.created_at) %></li>
-        <li><strong>Last updated:</strong> <%= format_date(@user.updated_at) %></li>
+        <li><strong>Joined on:</strong> <%= format_date(@user.created_at) %></li>
+        <li><strong>Last logged in:</strong> <%= @last_login.nil? ? "never" : format_date(@last_login) %></li>
+        <li><strong>No. times logged in:</strong> <%= @user.sign_in_count %></li>
       </ul>
       <hr>
       <h3>Admin actions</h3>

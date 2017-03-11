@@ -3,14 +3,25 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  before_validation :assign_role
   belongs_to :role
   has_many :programs
 
   scope :admin_email, -> { where(role_id: 1).order(email: :ASC) }
 
-  # default user to Regular upon creation
-  def assign_role
-    self.role = Role.find_by name: "Regular" if self.role.nil?
-  end
+  validates :email, presence: true,
+                    uniqueness: { case_sensitive: false }
+
+  before_save :downcase_email, :assign_role
+
+  private
+
+    # default user to Regular upon creation
+    def assign_role
+      self.role = Role.find_by name: "Regular" if self.role.nil?
+    end
+
+    # converts email to all lower case
+    def downcase_email
+      self.email = email.downcase
+    end
 end
