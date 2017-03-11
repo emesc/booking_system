@@ -1,7 +1,14 @@
-<ul id="nav" class="pull-right">
-  <li><%= debug controller.controller_path %></li>
+<ul id="nav" class="floatright">
+  <li><%#= debug controller.controller_path %></li>
   <% if user_signed_in? %>
-    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+    <li id="dropdown"><a href="">Welcome, <%= full_name(current_user.first_name, current_user.last_name) %></a>
+      <ul>
+        <% if current_user.role_id == 1 %>
+          <li><%= link_to "Admin Area", admin_programs_path %></li>
+        <% end %>
+        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+      </ul>
+    </li>
   <% elsif !user_signed_in? %>
     <li><%#= link_to "Sign up", new_user_registration_path %></li>
     <li><%= link_to "Sign in", new_user_session_path %></li>
