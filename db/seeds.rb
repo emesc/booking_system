@@ -39,7 +39,7 @@ Category.create!(name: "Humanities")
 Category.create!(name: "English")
 
 # users
-u1 = User.create!(first_name: "Dan", last_name: "Smith", email: "dansmith@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: nil)
+u1 = User.create!(first_name: "Dan", last_name: "Smith", email: "dansmith@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: 1)
 User.create!(first_name: "Beth", last_name: "Troy", email: "bethtroy@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: u1.id)
 User.create!(first_name: "Kyle", last_name: "Simon", email: "kylesimon@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: u1.id)
 User.create!(first_name: "John", last_name: "King", email: "johnking@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u1.id)
