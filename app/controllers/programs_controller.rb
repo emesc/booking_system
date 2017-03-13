@@ -1,5 +1,4 @@
 class ProgramsController < ApplicationController
-  load_and_authorize_resource
 
   def index
     all_programs = Program.all
@@ -18,6 +17,6 @@ class ProgramsController < ApplicationController
   def show
     @categories = Category.all
     @school_levels = SchoolLevel.all
-    # @program = Program.find(params[:id])
+    @program = Program.find(params[:id])
   end
 end

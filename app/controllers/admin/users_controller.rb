@@ -1,7 +1,5 @@
 class Admin::UsersController < Admin::ApplicationController
-  # before_action :set_user, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
-  # authorize_resource class: false
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 10)
@@ -19,6 +17,7 @@ class Admin::UsersController < Admin::ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.creator_id = current_user.id
     if @user.save
       flash[:success] = "User successfully created"
       redirect_to admin_user_path(@user)
@@ -30,7 +29,7 @@ class Admin::UsersController < Admin::ApplicationController
   def edit
   end
 
-  def update
+  def updated
     if user_params[:password].blank?
       user_params.delete(:password)
       user_params.delete(:password_confirmation)
@@ -62,9 +61,9 @@ class Admin::UsersController < Admin::ApplicationController
       params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role_id)
     end
 
-    # def set_user
-    #   @user = User.find(params[:id])
-    # end
+    def set_user
+      @user = User.find(params[:id])
+    end
 
   protected
 

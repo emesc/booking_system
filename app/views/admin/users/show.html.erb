@@ -5,6 +5,7 @@
     <div class="programs-show-description">
       <ul>
         <li><strong>Email:</strong> <%= @user.email %></li>
+        <li><strong>Created by:</strong> <%= full_name(@user.creator.first_name, @user.creator.last_name) %></li>
         <li><strong>Role:</strong> <%= @user.role.name %></li>
         <li><strong>Joined on:</strong> <%= format_date(@user.created_at) %></li>
         <li><strong>Last logged in:</strong> <%= @last_login.nil? ? "never" : format_date(@last_login) %></li>
@@ -12,7 +13,7 @@
       </ul>
       <hr>
       <h3>Admin actions</h3>
-      <%= link_to "Back", :back || admin_users_path, class: "program-link" %> | <%= link_to "Edit", edit_admin_user_path(@user), class: "program-link" %> | <%= link_to "Delete", admin_user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, class: "program-link" %>
+      <%= link_to "Back", admin_users_path, class: "program-link" %> | <%= link_to "Edit", edit_admin_user_path(@user), class: "program-link" %> | <%= link_to "Delete", admin_user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, class: "program-link" %>
     </div>
   </div>
 </div>
