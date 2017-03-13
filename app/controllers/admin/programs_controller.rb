@@ -1,5 +1,7 @@
 class Admin::ProgramsController < Admin::ApplicationController
-  before_action :set_program, only: [:show, :edit, :update, :destroy]
+  # before_action :set_program, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  # authorize_resource class: false
 
   def index
     if params[:search]
@@ -53,7 +55,7 @@ class Admin::ProgramsController < Admin::ApplicationController
       params.require(:program).permit(:program_title, :program_description, :program_fee, :duration, :image, :image_title, :topics, :group_size_min, :group_size_max, :time_am, :time_pm, :user_id, :category_id, :delivery_mode_id, school_level_ids: [])
     end
 
-    def set_program
-      @program = Program.find(params[:id])
-    end
+    # def set_program
+    #   @program = Program.find(params[:id])
+    # end
 end

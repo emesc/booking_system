@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   resources :programs, only: [:index, :show]
   resources :categories, only: [:show]
   resources :school_levels, only: [:show]
-
+  
   root "programs#index"
 end

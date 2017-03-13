@@ -13,6 +13,18 @@ class User < ApplicationRecord
 
   before_save :downcase_email, :assign_role
 
+  def admin?
+    self.role.name == "Admin"
+  end
+
+  def manager?
+    self.role.name == "Manager"
+  end
+
+  def regular?
+    self.role.name == "Regular"
+  end
+
   private
 
     # default user to Regular upon creation

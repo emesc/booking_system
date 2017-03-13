@@ -1,5 +1,7 @@
 class Admin::SchoolLevelsController < Admin::ApplicationController
-  before_action :set_school_level, only: [:show, :edit, :update, :destroy]
+  # before_action :set_school_level, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  # authorize_resource class: false
 
   def index
     @school_levels = SchoolLevel.all
@@ -48,7 +50,7 @@ class Admin::SchoolLevelsController < Admin::ApplicationController
       params.require(:school_level).permit(:name)
     end
 
-    def set_school_level
-      @school_level = SchoolLevel.find(params[:id])
-    end
+    # def set_school_level
+    #   @school_level = SchoolLevel.find(params[:id])
+    # end
 end

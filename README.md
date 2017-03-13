@@ -10,22 +10,21 @@ Ongoing. A demo of the current progress is [here](https://online-booking-system.
 
 [Ruby on Rails](http://rubyonrails.org/)
 
-## Planned features
+## Features
 
-### Views
+### Done
 
-* Separate controller and views for admin to manage resources.
-* Filters according to customers' areas of interest.
-* Calendar view for programs' available dates.
+* Separate controller and views for admin to manage resources
+* Filters (search, by category, by year) according to customers' areas of interest
+* Use devise to handle registrations and sessions but within the admin scope
+*
 
-### Users
+### Todo
 
-* Admins can make bookings, can view and create programs/users but should only be able to update and destroy their own programs.
-* Managers are school admins who can create and delete teacher accounts, can view programs, can make bookings.
-* Teachers can view programs, can make bookings.
-
-## Further challenges
-
+* Calendar view for programs' available dates
+* Admins can make bookings, can view and create programs/users but should only be able to update and destroy their own programs
+* Managers are school admins who can create and delete teacher accounts, can view programs, can make bookings; account registration with credit card info available only to managers
+* Teachers can view programs, can make bookings
 * Tests. Eg, a bug can cause the system to accept a booking although the slot is taken
 * Rating system and accept feedback from teachers
 * Favourites by following the lesson. This will allow the teachers to easily book the program for his/her next batch of students

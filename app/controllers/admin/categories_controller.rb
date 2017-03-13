@@ -1,5 +1,7 @@
 class Admin::CategoriesController < Admin::ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  # before_action :set_category, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  # authorize_resource class: false
 
   def index
     @categories = Category.paginate(page: params[:page], per_page: 10)
@@ -47,7 +49,7 @@ class Admin::CategoriesController < Admin::ApplicationController
       params.require(:category).permit(:name)
     end
 
-    def set_category
-      @category = Category.find(params[:id])
-    end
+    # def set_category
+    #   @category = Category.find(params[:id])
+    # end
 end
