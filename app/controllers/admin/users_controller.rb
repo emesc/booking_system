@@ -17,6 +17,7 @@ class Admin::UsersController < Admin::ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.creator_id = current_user.id
     if @user.save
       flash[:success] = "User successfully created"
       redirect_to admin_user_path(@user)
@@ -28,7 +29,7 @@ class Admin::UsersController < Admin::ApplicationController
   def edit
   end
 
-  def update
+  def updated
     if user_params[:password].blank?
       user_params.delete(:password)
       user_params.delete(:password_confirmation)

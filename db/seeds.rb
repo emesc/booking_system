@@ -39,19 +39,19 @@ Category.create!(name: "Humanities")
 Category.create!(name: "English")
 
 # users
-User.create!(first_name: "Dan", last_name: "Smith", email: "dansmith@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id)
-User.create!(first_name: "Beth", last_name: "Troy", email: "bethtroy@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id)
-User.create!(first_name: "Kyle", last_name: "Simon", email: "kylesimon@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id)
-User.create!(first_name: "John", last_name: "King", email: "johnking@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id)
-User.create!(first_name: "Abie", last_name: "Mills", email: "abiemills@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id)
-User.create!(first_name: "Faye", last_name: "Little", email: "fayelittle@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id)
+u1 = User.create!(first_name: "Dan", last_name: "Smith", email: "dansmith@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: nil)
+User.create!(first_name: "Beth", last_name: "Troy", email: "bethtroy@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: u1.id)
+User.create!(first_name: "Kyle", last_name: "Simon", email: "kylesimon@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: u1.id)
+User.create!(first_name: "John", last_name: "King", email: "johnking@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u1.id)
+User.create!(first_name: "Abie", last_name: "Mills", email: "abiemills@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u1.id)
+User.create!(first_name: "Faye", last_name: "Little", email: "fayelittle@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u1.id)
 
 
 50.times do |n|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = first_name.downcase + last_name.downcase + "@" + Faker::Internet.email.split("@").last
-  User.create!(first_name: first_name, last_name: last_name, email: email, password: "foobar", password_confirmation: "foobar", role_id: r3.id)
+  User.create!(first_name: first_name, last_name: last_name, email: email, password: "foobar", password_confirmation: "foobar", role_id: r3.id, creator_id: u1.id)
 end
 
 # programs

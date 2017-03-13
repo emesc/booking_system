@@ -16,8 +16,9 @@
       <li><strong>Start times:</strong> <%= @program.time_am.strftime("%l:%M %p") %>, <%= @program.time_pm.strftime("%l:%M %p") %></li>
       <li><strong>Mode of delivery:</strong> <%= @program.delivery_mode.name %></li>
       <li><strong>Target audience:</strong> <%= @program.school_levels.map(&:name).join(", ") %></li>
-      <li><strong>Date created:</strong> <%= @program.created_at.strftime("%d %B %Y at %l:%M %p") %></li>
-      <li><strong>Last update by:</strong> <%= full_name(@program.user.first_name, @program.user.last_name) %> on <%= @program.updated_at.strftime("%d %B %Y at %l:%M %p") %></li>
+      <li><strong>Date created:</strong> <%= format_date(@program.created_at) %></li>
+      <li><strong>Created by:</strong> <%= full_name(@program.user.first_name, @program.user.last_name) %></li>
+      <li><strong>Last update by:</strong> <%= full_name(@program.user.first_name, @program.user.last_name) %> on <%= format_date(@program.updated_at) %></li>
     </ul>
   </div>
   <div class="programs-show-description">
@@ -25,7 +26,7 @@
     <p><%= @program.program_description %></p>
     <hr>
     <h3>Admin actions</h3>
-    <%= link_to "Back", :back || admin_programs_path, class: "program-link" %> | <%= link_to "Edit", edit_admin_program_path(@program), class: "program-link" %> | <%= link_to "Delete", admin_program_path(@program), method: :delete, data: { confirm: "Are you sure?" }, class: "program-link" %>
+    <%= link_to "Back", admin_programs_path, class: "program-link" %> | <%= link_to "Edit", edit_admin_program_path(@program), class: "program-link" %> | <%= link_to "Delete", admin_program_path(@program), method: :delete, data: { confirm: "Are you sure?" }, class: "program-link" %>
   </div>
 </div>
 </div>

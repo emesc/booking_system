@@ -1,4 +1,5 @@
 class SchoolLevelsController < ApplicationController
+  
   def show
     @categories = Category.all
     @school_levels = SchoolLevel.all
