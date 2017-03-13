@@ -39,7 +39,7 @@ Category.create!(name: "Humanities")
 Category.create!(name: "English")
 
 # users
-u1 = User.new(first_name: "Dan", last_name: "Smith", email: "dansmith@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: )
+u1 = User.new(first_name: "Dan", last_name: "Smith", email: "dansmith@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id)
 u1.creator_id = 1
 u1.save
 User.create!(first_name: "Beth", last_name: "Troy", email: "bethtroy@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: u1.id)
