@@ -8,7 +8,7 @@ class User < ApplicationRecord
   # return all users created under this user (admin/manager)
   has_many :customers, class_name: "User", foreign_key: :creator_id
   # return this customer's creator
-  belongs_to :creator, class_name: "User"
+  belongs_to :creator, class_name: "User", optional: true
 
   # allow this user (admin only) to be creator of programs
   has_many :programs
@@ -19,6 +19,8 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
 
   before_save :downcase_email, :assign_role
+
+  validate :null_creator_only_for_admins, on: :create
 
   def admin?
     self.role.name == "Admin"
@@ -34,6 +36,10 @@ class User < ApplicationRecord
 
   private
 
+    def null_creator_only_for_admins
+      errors.add(:creator_id, "must be present") if (creator_id.nil? && !admin?)
+    end
+
     # default user to Regular upon creation
     def assign_role
       self.role = Role.find_by name: "Regular" if self.role.nil?
@@ -43,4 +49,5 @@ class User < ApplicationRecord
     def downcase_email
       self.email = email.downcase
     end
+
 end

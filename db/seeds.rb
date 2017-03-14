@@ -39,14 +39,12 @@ Category.create!(name: "Humanities")
 Category.create!(name: "English")
 
 # users
-u1 = User.new(first_name: "Dan", last_name: "Smith", email: "dansmith@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id)
-u1.creator_id = u1.id
-u1.save
-User.create!(first_name: "Beth", last_name: "Troy", email: "bethtroy@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: u1.id)
-User.create!(first_name: "Kyle", last_name: "Simon", email: "kylesimon@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: u1.id)
+u1 = User.create!(first_name: "Dan", last_name: "Smith", email: "dansmith@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id)
+u2 = User.create!(first_name: "Beth", last_name: "Troy", email: "bethtroy@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: u1.id)
+u3 = User.create!(first_name: "Kyle", last_name: "Simon", email: "kylesimon@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: u1.id)
 User.create!(first_name: "John", last_name: "King", email: "johnking@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u1.id)
-User.create!(first_name: "Abie", last_name: "Mills", email: "abiemills@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u1.id)
-User.create!(first_name: "Faye", last_name: "Little", email: "fayelittle@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u1.id)
+User.create!(first_name: "Abie", last_name: "Mills", email: "abiemills@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u2.id)
+User.create!(first_name: "Faye", last_name: "Little", email: "fayelittle@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u3.id)
 
 
 50.times do |n|
