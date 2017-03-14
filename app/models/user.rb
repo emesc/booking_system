@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :role
 
-  # return all users created under this user (admin/manager)
-  has_many :customers, class_name: "User", foreign_key: :creator_id
-  # return this customer's creator
-  belongs_to :creator, class_name: "User"
+  # use the relationship to associated a creator and its users
+  has_many :user_creations
+  has_many :users, through: :user_creations
+
   # allow this user (admin only) to be creator of programs
   has_many :programs
 
