@@ -47,12 +47,12 @@ User.create!(first_name: "Abie", last_name: "Mills", email: "abiemills@example.c
 User.create!(first_name: "Faye", last_name: "Little", email: "fayelittle@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u3.id)
 
 
-50.times do |n|
-  first_name = Faker::Name.first_name
-  last_name = Faker::Name.last_name
-  email = first_name.downcase + last_name.downcase + "@" + Faker::Internet.email.split("@").last
-  User.create!(first_name: first_name, last_name: last_name, email: email, password: "foobar", password_confirmation: "foobar", role_id: r3.id, creator_id: u1.id)
-end
+# 50.times do |n|
+#   first_name = Faker::Name.first_name
+#   last_name = Faker::Name.last_name
+#   email = first_name.downcase + last_name.downcase + "@" + Faker::Internet.email.split("@").last
+#   User.create!(first_name: first_name, last_name: last_name, email: email, password: "foobar", password_confirmation: "foobar", role_id: r3.id, creator_id: u1.id)
+# end
 
 # programs
 Program.create!(program_title: Faker::Lorem.words(2).map(&:capitalize).join(" "), program_description: Faker::Hipster.sentences(10).join(" "), program_fee: 10, image_title: "light fantastic", topics: "energy, reflection, refraction, lenses", duration: 1.5, group_size_min: 10, group_size_max: 20, time_am: "09:30:00", time_pm: "14:30:00", user_id: 1, category_id: 1, delivery_mode_id: 1, school_level_ids: [5])

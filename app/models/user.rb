@@ -18,10 +18,11 @@ class User < ApplicationRecord
 
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false }
-
-  before_save :downcase_email, :assign_role
-
   validate :null_creator_only_for_admins, on: :create
+  # validation happens before save, app throws an error about missing role if before_save is used
+  before_validation :assign_role
+
+  before_save :downcase_email
 
   def admin?
     self.role.name == "Admin"
@@ -37,13 +38,14 @@ class User < ApplicationRecord
 
   private
 
+    # optional creator only for admins
     def null_creator_only_for_admins
       errors.add(:creator_id, "must be present") if (creator_id.nil? && !admin?)
     end
 
     # default user to Regular upon creation
     def assign_role
-      self.role = Role.find_by name: "Regular" if self.role.nil?
+      self.role = Role.find_by(name: "Regular") if self.role.nil?
     end
 
     # converts email to all lower case

@@ -11,15 +11,15 @@
         <th>Date created</th>
         <th>Actions</th>
       </tr>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= link_to full_name(user.first_name, user.last_name), admin_user_path(user), class: "program-link" %></td>
-          <td><%= user.email %></td>
-          <td><%= user.role.name %></td>
-          <td><%= format_date(user.created_at) %></td>
-          <td><%= link_to "Edit", edit_admin_user_path(user), class: "btn admin-btn admin-btn-warning" %><%= link_to "Delete", admin_user_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn admin-btn admin-btn-danger" %></td>
-        </tr>
-      <% end %>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to full_name(user.first_name, user.last_name), admin_user_path(user), class: "program-link" %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role.name %></td>
+            <td><%= format_date(user.created_at) %></td>
+            <td><%= link_to "Edit", edit_admin_user_path(user), class: "btn admin-btn admin-btn-warning" %><%= link_to "Delete", admin_user_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn admin-btn admin-btn-danger" %></td>
+          </tr>
+        <% end %>
     </table>
     <%= will_paginate @users %>
   </div>
