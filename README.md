@@ -17,16 +17,18 @@ Ongoing. A demo of the current progress is [here](https://online-booking-system.
 * Separate controller and views for admin to manage resources
 * Filters (search, by category, by year) according to customers' areas of interest
 * Use devise to handle registrations and sessions but within the admin scope
-*
+* Admins and managers (who are school admins) who can create and delete teacher accounts, can view programs
+* Managers can perform CRUD on own users
+* Regulars (most probably teachers) can view programs
 
 ### Todo
 
 * Calendar view for programs' available dates
 * Admins can make bookings, can view and create programs/users but should only be able to update and destroy their own programs
-* Managers are school admins who can create and delete teacher accounts, can view programs, can make bookings; account registration with credit card info available only to managers
-* Teachers can view programs, can make bookings
+* Managers can make bookings; account registration with credit card info available only to managers
+* Teachers can make bookings
 * Tests. Eg, a bug can cause the system to accept a booking although the slot is taken
-* Rating system and accept feedback from teachers
+* Rating system and accept feedback from teachers only for those programs they booked
 * Favourites by following the lesson. This will allow the teachers to easily book the program for his/her next batch of students
 * See what their fellow teachers from another school are following
 * Information to the teacher following the lesson if the lesson is removed by the admin
