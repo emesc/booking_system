@@ -1,4 +1,6 @@
 class Admin::UsersController < Admin::ApplicationController
+  skip_before_action :verify_admin
+  before_action :redirect_regulars
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -56,6 +58,13 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   private
+
+    def redirect_regulars
+      if current_user.try(:regular?)
+        redirect_to root_url
+        flash[:danger] = "You are not authorized to access this page."
+      end
+    end
 
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role_id)

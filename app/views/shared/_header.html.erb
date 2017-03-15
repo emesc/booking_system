@@ -1,30 +1,5 @@
 <div class="wrapper header">
-  <!-- dont show booking manager if not signed in -->
-  <!-- todo: show booking manager iff role is admin -->
-  <% if (params[:controller].split("/").first == "admin" && params[:controller].split("/").last != "sessions") %>
-    <div class="clearfix header_top">
-      <div class="clearfix logo floatleft">
-        <a href="<%= admin_programs_path %>"><h1><span>Booking</span> Manager</h1></a>
-      </div>
-      <div class="clearfix search floatright">
-        <%= render "shared/search", search_path: admin_programs_path %>
-      </div>
-    </div>
-    <div class="header_bottom">
-      <nav>
-        <ul id="nav">
-          <li class="<%= active_class(programs_path) %>"><%= link_to "Home", programs_path %></li>
-          <li class="<%= active_class(admin_programs_path) %>"><%= link_to "Programs", admin_programs_path %></li>
-          <li class="<%= active_class(admin_categories_path) %>"><%= link_to "Categories", admin_categories_path %></li>
-          <li class="<%= active_class(admin_school_levels_path) %>"><%= link_to "School Levels", admin_school_levels_path %></li>
-          <li class="<%= active_class(admin_users_path) %>"><%= link_to "Users", admin_users_path %></li>
-          <li class="<%= active_class(admin_roles_path) %>"><%= link_to "User Roles", admin_roles_path %></li>
-        </ul>
-        <%= render "shared/session_links" %>
-      </nav>
-    </div>
-    <!-- show program booking (reg user's front page header) during log in and upon successful login -->
-  <% elsif (params[:controller] == "admin/sessions" || params[:controller].split("/").first != "admin") %>
+  <% if params[:controller].split("/").first == "programs" %>
     <div class="clearfix header_top">
       <div class="clearfix logo floatleft">
         <a href="<%= root_path %>"><h1><span>Program</span> Booking</h1></a>
@@ -50,6 +25,33 @@
           <li><%= link_to "Contact us", contact_path %></li>
           </ul>
           <%= render "shared/session_links" %>
+      </nav>
+    </div>
+  <% elsif user_signed_in? && (current_user.admin? || current_user.manager?) %>
+    <div class="clearfix header_top">
+      <div class="clearfix logo floatleft">
+        <a href="<%= admin_programs_path %>"><h1><span>Booking</span> Manager</h1></a>
+      </div>
+      <div class="clearfix search floatright">
+        <%= render "shared/search", search_path: admin_programs_path %>
+      </div>
+    </div>
+    <div class="header_bottom">
+      <nav>
+        <ul id="nav">
+          <li class="<%= active_class(programs_path) %>"><%= link_to "Home", programs_path %></li>
+          <% if current_user.admin? || current_user.manager? %>
+            <li class="<%= active_class(admin_users_path) %>"><%= link_to "Users", admin_users_path %></li>
+          <% end %>
+          <% if current_user.admin? %>
+            <li class="<%= active_class(admin_programs_path) %>"><%= link_to "Programs", admin_programs_path %></li>
+            <li class="<%= active_class(admin_categories_path) %>"><%= link_to "Categories", admin_categories_path %></li>
+            <li class="<%= active_class(admin_school_levels_path) %>"><%= link_to "School Levels", admin_school_levels_path %></li>
+            <li class="<%= active_class(admin_roles_path) %>"><%= link_to "User Roles", admin_roles_path %></li>
+          <% end %>
+
+        </ul>
+        <%= render "shared/session_links" %>
       </nav>
     </div>
   <% end %>
