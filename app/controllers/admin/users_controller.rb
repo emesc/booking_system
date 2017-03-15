@@ -4,11 +4,16 @@ class Admin::UsersController < Admin::ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.admins_first.paginate(page: params[:page], per_page: 10)
+    if current_user.admin?
+      @users = User.admins_first.paginate(page: params[:page], per_page: 10)
+    elsif current_user.manager?
+      @users = User.where(creator_id: current_user.id).paginate(page: params[:page], per_page: 10)
+    end
   end
 
   def show
-    if @user.current_sign_in_at
+    # it's ok to show user details if current user is admin or manager; otherwise, it will log out if redirected to this action thru admin_user_path(@user) from create or update action (I think it runs this action iff current_user == @user)
+    if ((current_user.admin? || current_user.manager?) && @user.current_sign_in_at)
       @last_login = @user.current_sign_in_at
     end
   end
@@ -22,7 +27,7 @@ class Admin::UsersController < Admin::ApplicationController
     @user.creator_id = current_user.id
     if @user.save
       flash[:success] = "User successfully created"
-      redirect_to admin_user_path(@user)
+      redirect_to admin_users_path
     else
       render 'new'
     end
@@ -31,7 +36,8 @@ class Admin::UsersController < Admin::ApplicationController
   def edit
   end
 
-  def updated
+  def update
+    # use devise's leave password blank during update
     if user_params[:password].blank?
       user_params.delete(:password)
       user_params.delete(:password_confirmation)
@@ -45,7 +51,7 @@ class Admin::UsersController < Admin::ApplicationController
 
     if successfully_updated
       flash[:success] = "User successfully updated"
-      redirect_to admin_user_path(@user)
+      redirect_to admin_users_path
     else
       render 'edit'
     end

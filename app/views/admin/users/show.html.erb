@@ -5,11 +5,13 @@
     <div class="programs-show-description">
       <ul>
         <li><strong>Email:</strong> <%= @user.email %></li>
-        <li><strong>Created by:</strong> <%= @user.creator.nil? ? "None. You are superadmin." : full_name(@user.creator.first_name, @user.creator.last_name) %></li>
         <li><strong>Role:</strong> <%= @user.role.name %></li>
         <li><strong>Joined on:</strong> <%= format_date(@user.created_at) %></li>
-        <li><strong>Last logged in:</strong> <%= @last_login.nil? ? "never" : format_date(@last_login) %></li>
-        <li><strong>No. times logged in:</strong> <%= @user.sign_in_count %></li>
+        <% if current_user.admin? %>
+          <li><strong>Created by:</strong> <%= @user.creator.nil? ? "None. You are superadmin." : full_name(@user.creator.first_name, @user.creator.last_name) %></li>
+          <li><strong>Last logged in:</strong> <%= @last_login.nil? ? "never" : format_date(@last_login) %></li>
+          <li><strong>No. times logged in:</strong> <%= @user.sign_in_count %></li>
+        <% end %>
       </ul>
       <hr>
       <h3>Admin actions</h3>

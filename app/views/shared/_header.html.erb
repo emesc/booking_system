@@ -40,16 +40,15 @@
       <nav>
         <ul id="nav">
           <li class="<%= active_class(programs_path) %>"><%= link_to "Home", programs_path %></li>
-          <% if current_user.admin? || current_user.manager? %>
-            <li class="<%= active_class(admin_users_path) %>"><%= link_to "Users", admin_users_path %></li>
-          <% end %>
           <% if current_user.admin? %>
             <li class="<%= active_class(admin_programs_path) %>"><%= link_to "Programs", admin_programs_path %></li>
             <li class="<%= active_class(admin_categories_path) %>"><%= link_to "Categories", admin_categories_path %></li>
             <li class="<%= active_class(admin_school_levels_path) %>"><%= link_to "School Levels", admin_school_levels_path %></li>
             <li class="<%= active_class(admin_roles_path) %>"><%= link_to "User Roles", admin_roles_path %></li>
           <% end %>
-
+          <% if current_user.admin? || current_user.manager? %>
+            <li class="<%= active_class(admin_users_path) %>"><%= link_to "Users", admin_users_path %></li>
+          <% end %>
         </ul>
         <%= render "shared/session_links" %>
       </nav>
