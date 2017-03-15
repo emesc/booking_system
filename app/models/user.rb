@@ -19,6 +19,7 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false }
   validate :null_creator_only_for_admins, on: :create
+  # validation happens before save, app throws an error about missing role if before_save is used
   before_validation :assign_role
 
   before_save :downcase_email
