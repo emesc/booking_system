@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false }
-  validate :null_creator_only_for_admins, on: :create
+  validate :null_creator_only_for_first_admin, on: :create
   # validation happens before save, app throws an error about missing role if before_save is used
   before_validation :assign_role
 
@@ -38,9 +38,9 @@ class User < ApplicationRecord
 
   private
 
-    # optional creator only for admins
-    def null_creator_only_for_admins
-      errors.add(:creator_id, "must be present") if (creator_id.nil? && !admin?)
+    # only the first admin is allowed to have no creator
+    def null_creator_only_for_first_admin
+      errors.add(:creator_id, "must be present") if User.any?
     end
 
     # default user to Regular upon creation

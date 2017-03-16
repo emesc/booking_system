@@ -39,12 +39,13 @@ Category.create!(name: "Humanities")
 Category.create!(name: "English")
 
 # users
-u1 = User.create!(first_name: "Dan", last_name: "Smith", email: "dansmith@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id)
-u2 = User.create!(first_name: "Beth", last_name: "Troy", email: "bethtroy@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: u1.id)
-u3 = User.create!(first_name: "Kyle", last_name: "Simon", email: "kylesimon@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: u1.id)
-User.create!(first_name: "John", last_name: "King", email: "johnking@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u1.id)
-User.create!(first_name: "Abie", last_name: "Mills", email: "abiemills@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u2.id)
-User.create!(first_name: "Faye", last_name: "Little", email: "fayelittle@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u3.id)
+# no guarantee that database will seed in this order so seed one user first
+u1 = User.create!(first_name: "Em", last_name: "Esc", email: "emesc@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id)
+# u2 = User.create!(first_name: "Beth", last_name: "Troy", email: "bethtroy@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: u1.id)
+# u3 = User.create!(first_name: "Kyle", last_name: "Simon", email: "kylesimon@example.com", password: "foobar", password_confirmation: "foobar", role_id: r1.id, creator_id: u1.id)
+# User.create!(first_name: "John", last_name: "King", email: "johnking@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u1.id)
+# User.create!(first_name: "Abie", last_name: "Mills", email: "abiemills@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u2.id)
+# User.create!(first_name: "Faye", last_name: "Little", email: "fayelittle@example.com", password: "foobar", password_confirmation: "foobar", role_id: r2.id, creator_id: u3.id)
 
 
 # 50.times do |n|
@@ -55,9 +56,9 @@ User.create!(first_name: "Faye", last_name: "Little", email: "fayelittle@example
 # end
 
 # programs
-Program.create!(program_title: Faker::Lorem.words(2).map(&:capitalize).join(" "), program_description: Faker::Hipster.sentences(10).join(" "), program_fee: 10, image_title: "light fantastic", topics: "energy, reflection, refraction, lenses", duration: 1.5, group_size_min: 10, group_size_max: 20, time_am: "09:30:00", time_pm: "14:30:00", user_id: 1, category_id: 1, delivery_mode_id: 1, school_level_ids: [5])
-Program.create!(program_title: Faker::Lorem.words(3).map(&:capitalize).join(" "), program_description: Faker::Hipster.sentences(10).join(" "), program_fee: 0, image_title: "airplane", topics: "energy, forces", duration: 1, group_size_min: 10, group_size_max: 20, time_am: "09:30:00", time_pm: "14:30:00", user_id: 2, category_id: 2, delivery_mode_id: 1, school_level_ids: [6])
-Program.create!(program_title: Faker::Lorem.words(2).map(&:capitalize).join(" "), program_description: Faker::Hipster.sentences(10).join(" "), program_fee: 0, image_title: "pressure build up", topics: "energy, atmospheric pressure, surface area", duration: 1, group_size_min: 10, group_size_max: 50, time_am: "09:30:00", time_pm: "14:30:00", user_id: 3, category_id: 2, delivery_mode_id: 2, school_level_ids: [3, 4])
+Program.create!(program_title: Faker::Lorem.words(2).map(&:capitalize).join(" "), program_description: Faker::Hipster.sentences(10).join(" "), program_fee: 10, image_title: "light fantastic", topics: "energy, reflection, refraction, lenses", duration: 1.5, group_size_min: 10, group_size_max: 20, time_am: "09:30:00", time_pm: "14:30:00", user_id: u1.id, category_id: 1, delivery_mode_id: 1, school_level_ids: [5])
+Program.create!(program_title: Faker::Lorem.words(3).map(&:capitalize).join(" "), program_description: Faker::Hipster.sentences(10).join(" "), program_fee: 0, image_title: "airplane", topics: "energy, forces", duration: 1, group_size_min: 10, group_size_max: 20, time_am: "09:30:00", time_pm: "14:30:00", user_id: u1.id, category_id: 2, delivery_mode_id: 1, school_level_ids: [6])
+Program.create!(program_title: Faker::Lorem.words(2).map(&:capitalize).join(" "), program_description: Faker::Hipster.sentences(10).join(" "), program_fee: 0, image_title: "pressure build up", topics: "energy, atmospheric pressure, surface area", duration: 1, group_size_min: 10, group_size_max: 50, time_am: "09:30:00", time_pm: "14:30:00", user_id: u1.id, category_id: 2, delivery_mode_id: 2, school_level_ids: [3, 4])
 
 30.times do |n|
   program_title = Faker::Lorem.words(2).map(&:capitalize).join(" ")
@@ -74,11 +75,11 @@ Program.create!(program_title: Faker::Lorem.words(2).map(&:capitalize).join(" ")
   group_size_max = rand(20..50).round(-1)
   time_am = "09:30:00"
   time_pm = "14:30:00"
-  user_id = rand(1..3)
+  # user_id = rand(1..3)
   category_id = rand(1..9)
   delivery_mode_id = rand(1..3)
   # generate random array of consecutive elements for target audience
   x = rand(0..4)
   school_level_ids = (1..7).to_a[x..(x+(rand(1..2)))]
-  Program.create!(program_title: program_title, program_description: program_description, program_fee: program_fee, image: image_url, image_title: image_title, topics: topics, duration: duration, group_size_min: group_size_min, group_size_max: group_size_max, time_am: time_am, time_pm: time_pm, user_id: user_id, category_id: category_id, delivery_mode_id: delivery_mode_id, school_level_ids: school_level_ids)
+  Program.create!(program_title: program_title, program_description: program_description, program_fee: program_fee, image: image_url, image_title: image_title, topics: topics, duration: duration, group_size_min: group_size_min, group_size_max: group_size_max, time_am: time_am, time_pm: time_pm, user_id: u1.id, category_id: category_id, delivery_mode_id: delivery_mode_id, school_level_ids: school_level_ids)
 end
