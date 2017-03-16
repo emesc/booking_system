@@ -8,7 +8,7 @@ class User < ApplicationRecord
   # return all users created under this user (admin/manager)
   has_many :customers, class_name: "User", foreign_key: :creator_id
   # return this customer's creator
-  belongs_to :creator, class_name: "User", optional: true
+  belongs_to :creator, class_name: "User"#, optional: true
 
   # allow this user (admin only) to be creator of programs
   has_many :programs
@@ -18,11 +18,13 @@ class User < ApplicationRecord
 
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false }
-  validate :null_creator_only_for_first_admin, on: :create
   # validation happens before save, app throws an error about missing role if before_save is used
   before_validation :assign_role
 
   before_save :downcase_email
+
+  # # enable only when creating the very first user
+  # validate :null_creator_only_for_first_admin, on: :create
 
   def admin?
     self.role.name == "Admin"
@@ -38,10 +40,10 @@ class User < ApplicationRecord
 
   private
 
-    # only the first admin is allowed to have no creator
-    def null_creator_only_for_first_admin
-      errors.add(:creator_id, "must be present") if User.any?
-    end
+    # # enable only when creating the very first user; only the first admin is allowed to have no creator
+    # def null_creator_only_for_first_admin
+    #   errors.add(:creator_id, "must be present") if User.first.present?
+    # end
 
     # default user to Regular upon creation
     def assign_role
