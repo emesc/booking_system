@@ -39,6 +39,14 @@ RSpec.describe "Programs", type: :request do
     end
 
     context "for logged in admin users" do
+      before do
+        login_as @john
+        get "/admin/programs"
+      end
+
+      it "should successfully access" do
+        expect(response.status).to eq 200
+      end
     end
   end
 end
