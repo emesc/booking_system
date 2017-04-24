@@ -8,6 +8,7 @@ class Program < ApplicationRecord
 
   mount_uploader :image, ImageUploader
   validate :image_size
+  validates_presence_of :program_title, :program_description, :program_fee, :duration, :topics, :group_size_min, :group_size_max, :time_am, :time_pm
 
   scope :sort_by_name, -> { order(program_title: :ASC) }
 

@@ -38,19 +38,19 @@
   </div>
   <div class="form-group">
     <%= f.label :category_id, "Category" %>
-    <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: "Select one" }, class: "form-control" %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: "Select one" }, class: "form-control", id: "categories" %>
   </div>
   <div class="form-group">
     <%= f.label :delivery_mode, "Mode of delivery" %>
-    <%= f.select :delivery_mode_id, DeliveryMode.all.collect{ |x| [x.name, x.id] }, { include_blank: "Select one" }, class: "form-control" %>
+    <%= f.select :delivery_mode_id, DeliveryMode.all.collect{ |x| [x.name, x.id] }, { include_blank: "Select one" }, class: "form-control", id: "deliveries" %>
   </div>
-  <div class="form-group">
+  <div class="form-group years">
     <%= f.label :school_level, "Target audience" %><br />
     <%= hidden_field_tag "program[school_level_ids][]", nil %>
     <div>
       <% @school_levels.each do |school_level| %>
         <span class="checkbox-list">
-          <%= check_box_tag "program[school_level_ids][]", school_level.id, @program.school_levels.include?(school_level) %>
+          <%= check_box_tag "program[school_level_ids][]", school_level.id, @program.school_levels.include?(school_level), id: "school_level_id_#{school_level.id}" %>
           <%= school_level.name %>
         </span>
       <% end %>
