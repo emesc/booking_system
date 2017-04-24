@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :school_levels, only: [:show]
   
   root "programs#index"
+
+  get "*path", to: "route_glob#index"
 end
