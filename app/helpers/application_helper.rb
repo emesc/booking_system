@@ -51,4 +51,9 @@ module ApplicationHelper
   def proper_case(string)
     string.split.map(&:capitalize).join(" ")
   end
+
+  # for finding the current controller
+  def current_controller
+    params[:controller].split("/").first
+  end
 end

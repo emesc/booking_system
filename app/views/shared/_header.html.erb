@@ -1,5 +1,6 @@
 <div class="wrapper header">
-  <% if params[:controller].split("/").first == "programs" %>
+  <%# if params[:controller].split("/").first == "programs" %>
+  <% if current_controller == "programs" || current_controller == "school_levels" || current_controller == "categories" || current_controller == "messages" %>
     <div class="clearfix header_top">
       <div class="clearfix logo floatleft">
         <a href="<%= root_path %>"><h1><span>Program</span> Booking</h1></a>
