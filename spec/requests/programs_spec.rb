@@ -25,6 +25,17 @@ RSpec.describe "Programs", type: :request do
     end
 
     context "for logged in non-admin users" do
+      before do
+        login_as @jane
+        get "/admin/programs"
+      end
+
+      it "should redirect to home page" do
+        expect(response.status).to eq 302
+        expect(response).to redirect_to root_path
+        flash_message = "You are not authorized to access this page."
+        expect(flash[:danger]).to eq flash_message
+      end
     end
 
     context "for logged in admin users" do
