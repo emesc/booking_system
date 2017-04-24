@@ -20,6 +20,7 @@ class Admin::ProgramsController < Admin::ApplicationController
   def create
     @program = Program.new(program_params)
     @program.user_id = current_user.id
+    @school_levels = SchoolLevel.all
     if @program.save
       flash[:success] = "Program successfully created"
       redirect_to admin_program_path(@program)
