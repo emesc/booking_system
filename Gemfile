@@ -28,7 +28,12 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 gem 'devise', '~> 4.2'
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'byebug', platform: :mri
+end
+
+group :test do
+  gem 'capybara', '~> 2.13'
 end
 
 group :development do 
@@ -36,6 +41,9 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'guard', '~> 2.14', '>= 2.14.1'
+  gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
+  gem 'guard-cucumber', '~> 2.1', '>= 2.1.2'
 end
 
 group :production do
