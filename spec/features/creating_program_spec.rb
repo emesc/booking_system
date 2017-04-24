@@ -19,8 +19,8 @@ RSpec.feature "Creating a program" do
     click_link "Admin Area"
 
     expect(current_path).to eq admin_programs_path
-    click_link "Programs"
     click_link "Create new"
+
     expect(current_path).to eq new_admin_program_path
     fill_in "Title", with: "Sample title"
     fill_in "Description", with: "Sample description"
@@ -46,8 +46,21 @@ RSpec.feature "Creating a program" do
     expect(page).to have_content("Created by: #{@user.first_name} #{@user.last_name}")
   end
 
-  # scenario "A logged in admin fails to create a new program" do
-  #   visit "/"
-  # end
+  scenario "A logged in admin fails to create a new program" do
+    visit "/"
+    click_link "Welcome, #{@user.first_name} #{@user.last_name}"
+    click_link "Admin Area"
+
+    expect(current_path).to eq admin_programs_path
+    click_link "Create new"
+
+    expect(current_path).to eq new_admin_program_path
+    fill_in "Title", with: ""
+    fill_in "Description", with: ""
+    click_button "Create program"
+
+    expect(page).to have_content("errors")
+    expect(page).to have_content("Program title can't be blank")
+  end
 
 end
