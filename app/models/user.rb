@@ -42,7 +42,7 @@ class User < ApplicationRecord
 
     # # enable only when creating the very first user; only the first admin is allowed to have no creator
     # def null_creator_only_for_first_admin
-    #   errors.add(:creator_id, "must be present") if User.first.present?
+    #   errors.add(:creator_id, "must be present") if User.any?
     # end
 
     # default user to Regular upon creation
