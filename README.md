@@ -2,7 +2,7 @@
 
 This platform emulates an online booking system that allows school teachers to book for enrichment programs offered by informal learning institutions like museums or private educational vendors.
 
-## Staus
+## Status
 
 Ongoing. A demo of the current progress is [here](https://online-booking-system.herokuapp.com).
 
@@ -21,7 +21,7 @@ Ongoing. A demo of the current progress is [here](https://online-booking-system.
 * Managers (school admins) can perform CRUD on own users (Regulars)
 * Regulars (most probably teachers) can only view programs
 
-### Todo
+### Ongoing
 * Tests
 
 ### What's next
