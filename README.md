@@ -32,9 +32,3 @@ Ongoing. A demo of the current progress is [here](https://online-booking-system.
 * Rating system and accept feedback from teachers only for those programs they booked
 * Favourites by following the lesson. This will allow the teachers to easily book the program for his/her next batch of students
 * See what their fellow teachers from another school are following
-* Information to the teacher following the lesson if the lesson is removed by the admin
-* Availability of programs are dependent on the availability of staff and laboratories
-* Suitability of laboratories for different programs
-* Each staff has different competencies relative to another eventhough they belong to the same department
-* Provide summary of weekly bookings which staff can export to a table and print
-* Provide a separate view for staff to see bookings assigned
