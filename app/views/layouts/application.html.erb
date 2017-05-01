@@ -18,7 +18,12 @@
       <div class="clearfix wrapper main_content_area">
         <%= render "shared/flash_message" %>
         <%= yield %>
-        <%= render "shared/sidebar" %>
+        <% if bookings_controller? %>
+          <div class="calendar"></div>
+          <div id="remote-container"></div>
+        <% else %>
+          <%= render "shared/sidebar" %>
+        <% end %>
       </div>
     </section>
     

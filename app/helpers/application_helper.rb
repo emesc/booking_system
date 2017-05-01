@@ -56,4 +56,9 @@ module ApplicationHelper
   def current_controller
     params[:controller].split("/").first
   end
+
+  # dont show sidebar when booking
+  def bookings_controller?
+    current_controller == "bookings"
+  end
 end
