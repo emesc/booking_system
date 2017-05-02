@@ -6,7 +6,7 @@
       <div class="work_single_page_feature"><%= image_tag @program.image.url if @program.image? %></div>
       <div class="work_meta clearfix">
         <p class="floatleft">Category : <span> <%= @program.category.name %></span> Topics: <span><%= @program.topics %></span></p>
-        <a class="floatright" href="" target="_blank">Book this program</a>
+        <%= link_to "Book this program", events_path, class: "floatright" %>
       </div>
       <div class="single_work_page_content">
         <p><%= @program.program_description %></p>

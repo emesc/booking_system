@@ -56,4 +56,15 @@ module ApplicationHelper
   def current_controller
     params[:controller].split("/").first
   end
+
+  # dont show sidebar when booking
+  def events_controller?
+    current_controller == "events"
+  end
+
+  # any controller for regular users
+  def any_controller_for_regulars?
+    current_controller == "programs" || current_controller == "school_levels" || current_controller == "categories" || current_controller == "messages" || events_controller?
+  end
+
 end
