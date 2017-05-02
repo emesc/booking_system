@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502025213) do
+ActiveRecord::Schema.define(version: 20170502100357) do
+
+  create_table "bookings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date     "booked_on"
+    t.text     "notes",      limit: 65535
+    t.integer  "user_id"
+    t.integer  "program_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["program_id"], name: "index_bookings_on_program_id", using: :btree
+    t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
+  end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -22,19 +33,6 @@ ActiveRecord::Schema.define(version: 20170502025213) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title"
-    t.datetime "start"
-    t.datetime "end"
-    t.string   "color"
-    t.integer  "user_id"
-    t.integer  "program_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["program_id"], name: "index_events_on_program_id", using: :btree
-    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -111,8 +109,8 @@ ActiveRecord::Schema.define(version: 20170502025213) do
     t.index ["role_id"], name: "index_users_on_role_id", using: :btree
   end
 
-  add_foreign_key "events", "programs"
-  add_foreign_key "events", "users"
+  add_foreign_key "bookings", "programs"
+  add_foreign_key "bookings", "users"
   add_foreign_key "programs", "categories"
   add_foreign_key "programs", "delivery_modes"
   add_foreign_key "programs", "users"
