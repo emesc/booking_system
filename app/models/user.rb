@@ -13,6 +13,9 @@ class User < ApplicationRecord
   # allow this user (admin only) to be creator of programs
   has_many :programs
 
+  # allows user to book for programs
+  # has_many :bookings
+
   scope :admin_email, -> { where(role_id: 1).order(email: :ASC) }
   scope :admins_first, -> { order(role_id: :ASC).order(email: :ASC) }
 
