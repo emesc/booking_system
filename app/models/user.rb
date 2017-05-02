@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :programs
 
   # allows user to book for programs
-  # has_many :bookings
+  has_many :bookings
 
   scope :admin_email, -> { where(role_id: 1).order(email: :ASC) }
   scope :admins_first, -> { order(role_id: :ASC).order(email: :ASC) }
