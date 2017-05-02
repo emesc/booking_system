@@ -1,4 +1,4 @@
-class Booking < ApplicationRecord
+class Event < ApplicationRecord
   belongs_to :user
   belongs_to :program
 

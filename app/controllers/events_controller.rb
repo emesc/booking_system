@@ -1,23 +1,27 @@
-class BookingsController < ApplicationController
+class EventsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
   
   def index
     @categories = Category.all
     @school_levels = SchoolLevel.all
-    @bookings = Booking.where(start: params[:start]..params[:end])
+    @events = Event.where(start: params[:start]..params[:end])
   end
 
   def show
   end
 
   def new
-    @booking = Booking.new
+    @event = Event.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    if @booking.save
+    @event = Event.new(event_params)
+    if @event.save
       flash[:success] = "Program successfully booked"
       # redirect_to bookings_path
     else
@@ -29,7 +33,7 @@ class BookingsController < ApplicationController
   end
 
   def update
-    if @booking.update_attributes(booking_params)
+    if @event.update_attributes(event_params)
       flash[:success] = "Booking successfully updated"
       # redirect_to bookings_path
     else
@@ -38,16 +42,16 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking.destroy
+    @event.destroy
   end
 
   private
 
     def set_booking
-      @booking = Booking.find(params[:id])
+      @event = Event.find(params[:id])
     end
 
     def booking_params
-      params.require(:booking).permit(:title, :color, :start, :end, :user_id, :program_id)
+      params.require(:event).permit(:title, :color, :start, :end, :user_id, :program_id)
     end
 end
