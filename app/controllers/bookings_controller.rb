@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    puts params.inspect
     if @booking.save
       flash[:success] = "Program successfully booked"
       redirect_to bookings_path
