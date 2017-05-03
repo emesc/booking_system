@@ -5,5 +5,8 @@
   <%#= f.text_field :program, value: set_program, class: "form-control" %>
   <p><%= f.label :program, "Program Title: #{set_program.program_title}" %></p>
   <p><%= f.label :user, "Booked by: #{set_user}" %></p> 
-  <%= f.input :booked_on, as: :date, label: "Select your preferred date" %>
+  <%= f.input :preferred_date, as: :date, label: "Select your preferred date" %>
+  <%= f.label :preferred_time, "Select your preferred time" %><br>
+  <p><%= f.collection_radio_buttons :preferred_time, [[set_program.time_am, "#{format_time(set_program.time_am)}"], [set_program.time_pm, "#{format_time(set_program.time_pm)}"]], :first, :last %></p>
+  <%= f.button :submit %>
 <% end %>

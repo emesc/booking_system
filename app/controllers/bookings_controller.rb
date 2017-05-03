@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  # before_action :set_program, only: [:new, :create]
+  # before_action :set_user, only: [:new, :create]
 
   def index
     @categories = Category.all
@@ -47,11 +49,10 @@ class BookingsController < ApplicationController
 
     def set_booking
       @booking = Booking.find(params[:id])
-    endser = current_user.id
     end
 
     def booking_params
-      params.require(:booking).permit(:booked_on, :notes, :user_id, :program_id)
+      params.require(:booking).permit(:preferred_date, :preferred_time, :notes, :user_id, :program_id)
     end
 
 end

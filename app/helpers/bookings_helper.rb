@@ -5,7 +5,7 @@ module BookingsHelper
   end
 
   def set_user
-    user = User.find_by_id(params[:user_id])
+    user = current_user
     full_name(user.first_name, user.last_name)
   end
 end

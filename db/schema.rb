@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502100357) do
+ActiveRecord::Schema.define(version: 20170503015457) do
 
   create_table "bookings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.date     "booked_on"
-    t.text     "notes",      limit: 65535
+    t.date     "preferred_date"
+    t.text     "notes",          limit: 65535
     t.integer  "user_id"
     t.integer  "program_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.time     "preferred_time"
     t.index ["program_id"], name: "index_bookings_on_program_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
