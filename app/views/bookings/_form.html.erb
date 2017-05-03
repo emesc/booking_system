@@ -1,0 +1,9 @@
+<%= simple_form_for @booking do |f| %>
+  <%#= f.association :program, value_method: params[:program_id], label_method: :program_title, include_blank: false %>
+  <%#= f.association :program, collection: Program.order(:program_title), value_method: params[:program_id], label_method: :program_title, prompt: "Choose a Program" %>
+  <%#= f.label :program, "Program Title" %>
+  <%#= f.text_field :program, value: set_program, class: "form-control" %>
+  <p><%= f.label :program, "Program Title: #{set_program.program_title}" %></p>
+  <p><%= f.label :user, "Booked by: #{set_user}" %></p> 
+  <%= f.input :booked_on, as: :date, label: "Select your preferred date" %>
+<% end %>

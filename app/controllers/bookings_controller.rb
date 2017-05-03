@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_booking
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def index
     @categories = Category.all
@@ -47,6 +47,7 @@ class BookingsController < ApplicationController
 
     def set_booking
       @booking = Booking.find(params[:id])
+    endser = current_user.id
     end
 
     def booking_params
