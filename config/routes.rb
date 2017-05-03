@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "contact", to: "messages#new", as: "contact"
   post "contact", to: "messages#create"
 
-  resources :events
+  resources :bookings
   resources :programs, only: [:index, :show]
   resources :categories, only: [:show]
   resources :school_levels, only: [:show]

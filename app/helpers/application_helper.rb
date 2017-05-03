@@ -58,13 +58,13 @@ module ApplicationHelper
   end
 
   # dont show sidebar when booking
-  def events_controller?
-    current_controller == "events"
+  def bookings_controller?
+    current_controller == "bookings"
   end
 
   # any controller for regular users
   def any_controller_for_regulars?
-    current_controller == "programs" || current_controller == "school_levels" || current_controller == "categories" || current_controller == "messages" || events_controller?
+    current_controller == "programs" || current_controller == "school_levels" || current_controller == "categories" || current_controller == "messages" || bookings_controller?
   end
 
 end

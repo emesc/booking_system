@@ -27,6 +27,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 gem 'simple_form', '~> 3.4'
 gem 'devise', '~> 4.2'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'

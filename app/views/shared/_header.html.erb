@@ -9,25 +9,27 @@
         <%= render "shared/search", search_path: programs_path %>
       </div>
     </div>
-    <div class="header_bottom">
-      <nav>
-        <ul id="nav">
-          <li><%= link_to "Home", root_path %></li>
-          <li id="dropdown"><a href="">Categories</a>
-            <ul>
-              <% @categories.each do |category| %>
-                <li><%= link_to category.name, category_path(category) %></li>
-              <% end %>
+    <% unless bookings_controller? %>
+      <div class="header_bottom">
+        <nav>
+          <ul id="nav">
+            <li><%= link_to "Home", root_path %></li>
+            <li id="dropdown"><a href="">Categories</a>
+              <ul>
+                <% @categories.each do |category| %>
+                  <li><%= link_to category.name, category_path(category) %></li>
+                <% end %>
+              </ul>
+            </li>
+            <% @school_levels.each do |school_level| %>
+              <li><%= link_to school_level.name, school_level_path(school_level) %></li>
+            <% end %>
+            <li><%= link_to "Contact us", contact_path %></li>
             </ul>
-          </li>
-          <% @school_levels.each do |school_level| %>
-            <li><%= link_to school_level.name, school_level_path(school_level) %></li>
-          <% end %>
-          <li><%= link_to "Contact us", contact_path %></li>
-          </ul>
-          <%= render "shared/session_links" %>
-      </nav>
-    </div>
+            <%= render "shared/session_links" %>
+        </nav>
+      </div>
+    <% end %>
   <% elsif user_signed_in? && (current_user.admin? || current_user.manager?) %>
     <div class="clearfix header_top">
       <div class="clearfix logo floatleft">

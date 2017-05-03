@@ -3,10 +3,9 @@ class Program < ApplicationRecord
   belongs_to :category
   belongs_to :delivery_mode
 
+  has_many :bookings
   has_many :suitabilities
   has_many :school_levels, through: :suitabilities
-
-  # has_many :bookings
 
   mount_uploader :image, ImageUploader
   validate :image_size
