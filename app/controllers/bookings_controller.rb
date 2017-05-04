@@ -15,10 +15,12 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @booking.program_id = params[:program_id]
   end
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.user = current_user
     puts params.inspect
     if @booking.save
       flash[:success] = "Program successfully booked"
@@ -53,7 +55,7 @@ class BookingsController < ApplicationController
     end
 
     def booking_params
-      params.require(:booking).permit(:preferred_date, :preferred_time, :notes, :user_id, :program_id)
+      params.require(:booking).permit(:preferred_date, :preferred_time, :notes, :program_id, :user_id)
     end
 
 end
