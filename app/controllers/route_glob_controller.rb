@@ -1,7 +1,7 @@
 class RouteGlobController < ApplicationController
 
   def index
-    @program = Program.where("program_title LIKE ? or program_description LIKE ?", "%#{params[:path]}%", "%#{params[:path]}%").first
+    @program = Program.where("program_title ILIKE ? or program_description ILIKE ?", "%#{params[:path]}%", "%#{params[:path]}%").first
     if @program
       redirect_to program_path(@program)
     else
