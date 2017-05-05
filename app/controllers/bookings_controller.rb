@@ -21,7 +21,6 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    jkerj
     if @booking.save
       flash[:success] = "Program successfully booked"
       redirect_to bookings_path
