@@ -12,43 +12,46 @@
 
 ActiveRecord::Schema.define(version: 20170503015457) do
 
-  create_table "bookings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
     t.date     "preferred_date"
-    t.text     "notes",          limit: 65535
+    t.text     "notes"
     t.integer  "user_id"
     t.integer  "program_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.time     "preferred_time"
     t.index ["program_id"], name: "index_bookings_on_program_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
 
-  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "delivery_modes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "delivery_modes", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "messages", force: :cascade do |t|
     t.string   "name"
     t.string   "subject"
-    t.text     "content",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "email"
   end
 
-  create_table "programs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "programs", force: :cascade do |t|
     t.string   "program_title"
-    t.text     "program_description", limit: 65535
-    t.decimal  "program_fee",                       precision: 5, scale: 2
+    t.text     "program_description"
+    t.decimal  "program_fee",         precision: 5, scale: 2
     t.string   "image_title"
     t.string   "topics"
     t.integer  "group_size_min"
@@ -58,29 +61,29 @@ ActiveRecord::Schema.define(version: 20170503015457) do
     t.integer  "user_id"
     t.integer  "category_id"
     t.integer  "delivery_mode_id"
-    t.datetime "created_at",                                                null: false
-    t.datetime "updated_at",                                                null: false
-    t.decimal  "duration",                          precision: 4, scale: 2
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.decimal  "duration",            precision: 4, scale: 2
     t.string   "image"
     t.index ["category_id"], name: "index_programs_on_category_id", using: :btree
     t.index ["delivery_mode_id"], name: "index_programs_on_delivery_mode_id", using: :btree
     t.index ["user_id"], name: "index_programs_on_user_id", using: :btree
   end
 
-  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  create_table "school_levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "school_levels", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "suitabilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "suitabilities", force: :cascade do |t|
     t.integer  "program_id"
     t.integer  "school_level_id"
     t.datetime "created_at",      null: false
@@ -88,7 +91,7 @@ ActiveRecord::Schema.define(version: 20170503015457) do
     t.index ["program_id", "school_level_id"], name: "index_suitabilities_on_program_id_and_school_level_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "role_id"

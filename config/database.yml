@@ -5,8 +5,8 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: mysql2
-  username: booking_system
+  adapter: postgresql
+  encoding: unicode
   password: foobar
   pool: 5
   timeout: 5000
