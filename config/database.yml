@@ -10,6 +10,7 @@ default: &default
   password: foobar
   pool: 5
   timeout: 5000
+  host: locahost
 
 development:
   <<: *default
