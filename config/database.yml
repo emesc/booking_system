@@ -7,9 +7,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: booking_system
   password: foobar
   pool: 5
-  timeout: 5000
+  # timeout: 5000
   host: localhost
 
 development:

@@ -5,7 +5,7 @@ jobs:
       - image: ruby:2.3
       - image: postgres:9.4.1
         environment:
-          POSTGRES_USER: root
+          POSTGRES_USER: booking_system
 
     working_directory: ~/booking_system
     steps:
