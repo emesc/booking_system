@@ -5,6 +5,7 @@
 #   gem 'sqlite3'
 #
 default: &default
+  adapter: mysql2
   username: booking_system
   password: foobar
   pool: 5
@@ -13,7 +14,6 @@ default: &default
 
 development:
   <<: *default
-  adapter: mysql2
   database: booking_system_development
 
 # Warning: The database defined as "test" will be erased and
@@ -21,12 +21,12 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
+  # adapter: postgresql
+  # encoding: unicode
   database: booking_system_test
 
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
+  # adapter: postgresql
+  # encoding: unicode
   database: db/production.sqlite3
