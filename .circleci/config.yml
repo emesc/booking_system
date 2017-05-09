@@ -3,9 +3,9 @@ jobs:
   build:
     docker:
       - image: ruby:2.3
-      - image: mysql:14.14
+      - image: postgres:9.4.1
         environment:
-          MYSQL2_USER: booking_system
+          POSTGRES_USER: booking_system
 
     working_directory: ~/booking_system
     steps:
