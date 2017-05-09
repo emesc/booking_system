@@ -2,9 +2,6 @@ version: 2
 executorType: docker
 containerInfo:
   - image: ruby:2.3.1
-    env:
-      - DB_PASSWORD=foobar
-      - DB_HOST=127.0.0.1
   - image: mariadb:5.5
     env:
       - MYSQL_ROOT_PASSWORD=foobar
