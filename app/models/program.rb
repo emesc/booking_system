@@ -14,7 +14,7 @@ class Program < ApplicationRecord
   scope :sort_by_name, -> { order(program_title: :ASC) }
 
   def self.search(query)
-    where("program_title ILIKE ? or program_description ILIKE ?", "%#{query}%", "%#{query}%")
+    where("program_title LIKE ? or program_description LIKE ?", "%#{query}%", "%#{query}%")
   end
 
   private
