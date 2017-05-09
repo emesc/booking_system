@@ -20,4 +20,4 @@ jobs:
       prod:
         branch: master
         heroku:
-          appname: booking_system
+          appname: online-booking-system
