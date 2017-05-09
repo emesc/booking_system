@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: ruby:2.3
-      - image: mysql2:0.4.5
+      - image: mysql:14.14
         environment:
           MYSQL2_USER: booking_system
 
