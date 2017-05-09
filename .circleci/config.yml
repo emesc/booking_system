@@ -1,13 +1,13 @@
-version: 2
+version: 1
 jobs:
   build:
     docker:
       - image: ruby:2.3
-      - image: postgres:9.4.1
+      - image: mysql2:0.4.5
         environment:
-          POSTGRES_USER: root
+          MYSQL2_USER: booking_system
 
-    working_directory: ~/cci-demo-rails
+    working_director: ~/booking_system
     steps:
       - checkout
       - run: apt-get update -qq && apt-get install -y build-essential nodejs
