@@ -9,7 +9,7 @@ default: &default
   password: foobar
   pool: 5
   timeout: 5000
-  host: locahost
+  host: localhost
 
 development:
   <<: *default
@@ -22,9 +22,11 @@ development:
 test:
   <<: *default
   adapter: postgresql
+  encoding: unicode
   database: booking_system_test
 
 production:
   <<: *default
   adapter: postgresql
+  encoding: unicode
   database: db/production.sqlite3
