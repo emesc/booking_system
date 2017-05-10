@@ -15,8 +15,8 @@ jobs:
       - run: bundle exec rake db:create db:schema:load --trace
       - run: bundle exec rake db:migrate
       - run: bundle exec rake test
-    deployment:
-      production:
-        branch: master
-        heroku:
-          appname: online-booking-system  
+  deployment:
+    production:
+      branch: master
+      heroku:
+        appname: online-booking-system
