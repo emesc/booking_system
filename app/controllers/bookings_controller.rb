@@ -14,12 +14,12 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    @booking.program_id = params[:program_id]
-    @program = Program.find_by_id(@booking.program_id)
+    @program = Program.find_by_id(params[:program_id])
   end
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.program = Program.find_by_id(params[:program_id])
     @booking.user = current_user
     if @booking.save
       flash[:success] = "Program successfully booked"

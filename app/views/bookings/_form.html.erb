@@ -1,7 +1,10 @@
 <%= simple_form_for @booking do |f| %>
-  <%= f.association :program, label_method: :program_title, disabled: true %>
+  <h3><%= @program.program_title %></h3>
+  <%= hidden_field_tag 'program_id', @program.id %>
+  <%#= f.association :program, label_method: :program, disabled: true %>
+  <%= f.input :program, as: :hidden, input_html: { value: @program } %>
   <%= f.input :preferred_date, as: :string, label: "Select your preferred date", input_html: { class: 'date_picker' } %>
   <%= f.label :preferred_time, "Select your preferred time" %><br>
-  <p><%= f.collection_radio_buttons :preferred_time, [[@booking.program.time_am, "#{format_time(@booking.program.time_am)}"], [@booking.program.time_pm, "#{format_time(@booking.program.time_pm)}"]], :first, :last %></p>
+  <p><%= f.collection_radio_buttons :preferred_time, [[@program.time_am, "#{format_time(@program.time_am)}"], [@program.time_pm, "#{format_time(@program.time_pm)}"]], :first, :last %></p>
   <%= f.button :submit, class: "btn admin-btn admin-create-btn" %><%= link_to "Cancel and go back to programs list", programs_path, class: "btn admin-btn admin-cancel-btn" %>
 <% end %>
