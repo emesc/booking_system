@@ -1,9 +1,16 @@
 <% title "New Booking" %>
-<div class="clearfix main_content floatleft">       
-  <div class="clearfix content">
-    <div class="contact_us">
-      <h1>Make a new booking</h1>
-      <%= render "form" %>
-    </div>
+<div class="row">
+  <div class="col-md-4">
+    <h1>Make a new booking for</h1>
+    <%= render "form" %>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-6">
+    <h2><%= @program.program_title %></h2>
+    <p><%= @program.program_description %></p>
+    <p><i class="fa fa-money big" aria-hidden="true"></i> <%= free?(@program.id) %></p>
+    <p><i class="fa fa-hourglass-half big" aria-hidden="true"></i> <%= pluralize(@program.duration, "hour") %></p>
+    <p><i class="fa fa-crosshairs big" aria-hidden="true"></i> <%= @program.school_levels.map(&:name).join(", ") %></p>
+    <p><i class="fa fa-users big" aria-hidden="true"></i> <%= @program.group_size_min %> to <%= @program.group_size_max %> students</p>
   </div>
 </div>

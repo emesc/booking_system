@@ -3,10 +3,9 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   # before_action :set_program, only: [:new, :create]
   # before_action :set_user, only: [:new, :create]
+  before_action :set_resources, only: [:index, :new]
 
   def index
-    @categories = Category.all
-    @school_levels = SchoolLevel.all
     @bookings = Booking.all    
   end
 
@@ -15,11 +14,12 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    @booking.program_id = params[:program_id]
+    @program = Program.find_by_id(params[:program_id])
   end
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.program = Program.find_by_id(params[:program_id])
     @booking.user = current_user
     if @booking.save
       flash[:success] = "Program successfully booked"
@@ -57,4 +57,8 @@ class BookingsController < ApplicationController
       params.require(:booking).permit(:preferred_date, :preferred_time, :notes, :program_id, :user_id)
     end
 
+    def set_resources
+      @categories = Category.all
+      @school_levels = SchoolLevel.all
+    end
 end
