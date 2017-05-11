@@ -17,6 +17,6 @@
 //= require turbolinks
 //= require_tree .
 
-$(function() {
-  $("#booking_preferred_date").datepicker();
-});
+// $(function() {
+//   $("input#booking_preferred_date").datepicker();
+// });
