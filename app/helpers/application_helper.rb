@@ -47,6 +47,10 @@ module ApplicationHelper
     input_date.strftime("%d %B %Y at %l:%M %p")
   end
 
+  def format_date_only(input_date)
+    input_date.strftime("%d %B %Y")
+  end
+
   # capitalize
   def proper_case(string)
     string.split.map(&:capitalize).join(" ")

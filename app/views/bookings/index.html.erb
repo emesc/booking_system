@@ -1,6 +1,9 @@
 <% title "All Bookings" %>
 
+<p>Testing showing all bookings</p>
 <% @bookings.each do |booking| %>
   <li><%= booking.program.program_title %></li>
+  <li><%= format_date_only(booking.preferred_date) %></li>
   <li><%= format_time(booking.preferred_time) %></li>
+  <br>
 <% end %>
