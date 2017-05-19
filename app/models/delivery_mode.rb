@@ -1,2 +1,2 @@
-class DeliveryMode < ApplicationRecord
+class DeliveryMode < ActiveRecord::Base
 end

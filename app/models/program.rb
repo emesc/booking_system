@@ -1,4 +1,4 @@
-class Program < ApplicationRecord
+class Program < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   belongs_to :delivery_mode
